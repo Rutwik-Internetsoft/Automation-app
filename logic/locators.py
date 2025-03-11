@@ -62,7 +62,7 @@ class LocatorLoader:
 class Locators(LocatorLoader):
     
     def __init__(self):
-        locator_file="C:/Users/rutwik/Automation/logic/locators.yaml"
+        locator_file="logic/locators.yaml"
         self.locator_loader = LocatorLoader(locator_file=locator_file)
     
     def get_locator(self, key, section, **kwargs):
