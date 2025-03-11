@@ -1,0 +1,14 @@
+setup.py
+automation.egg-info/PKG-INFO
+automation.egg-info/SOURCES.txt
+automation.egg-info/dependency_links.txt
+automation.egg-info/top_level.txt
+logic/__init__.py
+logic/cash_log_logic.py
+logic/dependencies.py
+logic/dining_logic.py
+logic/locators.py
+logic/login_logic.py
+logic/loyality_program_logic.py
+logic/split_logic.py
+logic/takeout_logic.py

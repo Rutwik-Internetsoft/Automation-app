@@ -1,0 +1,554 @@
+common:
+  tvAmt:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvTotalAmount"]'
+  cancel:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCancelOrder"]'
+
+  update_order:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtEditOrder"]'
+
+  date:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvDate"]'
+
+  date1:
+   by: xpath
+   locator: '(//android.widget.TextView[@resource-id="com.pays.pos:id/tvDate"])[1]'
+
+  pending_order:
+    by: xpath
+    locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/llMainLayout"]'
+  
+  phone_order_btn:  
+    by: xpath
+    locator:  "//android.widget.TextView[@resource-id='com.pays.pos:id/txtTitle' and @text='Phone Order']"
+
+  first_name_field:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edtFName"]'
+  
+  surname_field:
+    by: id
+    locator: "com.pays.pos:id/edtLName"
+  phone_field:
+    by: id
+    locator: "com.pays.pos:id/edtPhoneNo"
+  email_field:
+    by: id
+    locator: "com.pays.pos:id/edtEmail"
+  
+  email_field_new_cust:
+    by: id
+    locator: "com.pays.pos:id/edtEmailAdd"
+  
+  add_customer:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtAddCustomer"]'
+
+  create_customer:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCreateCustomer"]'
+
+  imgAdd:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/imgAdd"]'
+
+  stay:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Stay"]'
+
+  open_oder:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Open Order"]'
+  end_tip:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvtipadd"]'
+
+  discount_menu:
+    by: xpath
+    locator: '//android.widget.ImageView[@content-desc="Menu"]'
+  
+  card_machine:
+   by: xpath
+   locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCardMachine"]'
+
+  connect_pax:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvPax"]'
+
+  disconnect_pax:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvDisconnectPax"]'
+  next:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtNext"]'
+  
+  order_type_board:
+    by: xpath
+    locator: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvOrderType"]'
+
+  transaction_order_type:
+    by: xpath
+    locator: '(//android.widget.TextView[@resource-id="com.pays.pos:id/tvOrderType"])[1]'
+
+  continue:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtContinue"]'
+
+  hardware:
+   by: xpath
+   locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linearHardware"]'
+  
+  pay_button:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvPayNow"]'
+
+  txtpay_button:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtPayNow"]'
+  
+  printer:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtPrinter"]'
+
+  main_menu:
+    by: xpath
+    locator: '//android.widget.ImageView[@resource-id="com.pays.pos:id/imgDrawer"]'
+
+  logout:
+    by: xpath
+    locator: '//android.widget.TextView[@text="Logout"]'
+
+  sure_popup:
+    by: xpath
+    locator: '//android.widget.FrameLayout[@resource-id="com.pays.pos:id/custom"]/android.widget.LinearLayout'
+
+  save:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvSave"]'
+
+  txtsave:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtSave"]'
+
+  current_order_type:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/orderTypeDisplay"]'
+
+  login:
+    by: xpath
+    locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/linearLogin"]'
+
+  cash_pay:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvCash0"]'
+
+  payment_home:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/llHome"]'
+  
+  transaction_button:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTransaction"]'
+
+  transaction_total_amt:
+    by: id
+    locator: 'com.pays.pos:id/tvTotalAmount'
+
+  card_pay:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvCard0"]'
+  
+  home_icon:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtHome"]'
+
+  card_button:
+    by: xpath
+    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/llCreditCard"]'
+  
+  giftcard:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCategoryName" and @text="GIFT CARD"]'
+
+  gift_pay:
+    by: xpath
+    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/lnrGiftCard"]'
+
+  gift_card_number:
+    by: id
+    locator: 'com.pays.pos:id/edtGiftCardNumber'
+
+  gift_charge:
+    by: id
+    locator: 'com.pays.pos:id/txtChargeGC'
+
+  gift_card_balance:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCategoryName" and @text="Balance Inquiry"]'
+
+  gift_balance:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvMessage"]'
+
+  back_button:
+    by: xpath
+    locator: '//android.widget.ImageView[@resource-id="com.pays.pos:id/imgBack"]'
+
+  check_balance:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCheckBalance"]'
+
+login_page:
+  username_field:
+    by: id
+    locator: "com.pays.pos:id/edtEmail"
+  
+  password_field:
+    by: id
+    locator: "com.pays.pos:id/edtPassword"
+  
+  login_button:
+    by: id
+    locator: "com.pays.pos:id/txtSignIn"
+  main_page_indicator:
+    by: xpath
+    locator: '(//android.widget.FrameLayout[@resource-id="com.pays.pos:id/navHostFrag"])[2]/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat'
+  nav_host:
+    by: id
+    locator: "com.pays.pos:id/navHostFrag"
+  passcode_field:
+    by: id
+    locator: "com.pays.pos:id/circlePin"
+  action_bar_root:
+    by: id
+    locator: "com.pays.pos:id/action_bar_root"
+
+calculations:
+
+
+  plus_button:
+    by: xpath
+    locator: '//android.widget.ImageView[@resource-id="com.pays.pos:id/imgPlus"]'
+
+  Cart_qty: 
+    by: xpath
+    locator: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCartList"]/androidx.appcompat.widget.LinearLayoutCompat/android.widget.LinearLayout'
+
+  custom_item_name:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edtItemName"]'
+
+  keypad_view:
+    by: xpath
+    locator: '//android.view.ViewGroup[@resource-id="com.pays.pos:id/llKeypad"]/android.widget.RelativeLayout/androidx.appcompat.widget.LinearLayoutCompat'
+
+  keypad:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtKeypad"]'
+
+  takeout_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Take Out"]'
+
+  items:
+    by: xpath
+    locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/linear_item"]'
+
+  modifiers_page:
+    by: xpath
+    locator: '(//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/llMain"])'
+
+  tax:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTax"]'
+
+  sub_total:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtSubTotal"]'
+  
+  discount:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtDiscount"]'
+
+  discount_menu:
+    by: xpath
+    locator: '//android.widget.ImageView[@content-desc="Menu"]'
+
+  add_note:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/title" and @text="Add Order Note"]'
+    
+  add_item_note:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtAddNote"]'
+
+  add_discount:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/title" and @text="Add Discount"]'
+  
+  tax_dropdown:
+    by: xpath
+    locator: '//android.widget.ImageView[@resource-id="com.pays.pos:id/img_dropdown"]'
+  
+  tax_list:
+    by: xpath
+    locator: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rv_tax"]/android.widget.LinearLayout'
+  
+  service_charge:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtServiceCharge"]'
+  
+  cash_refund:
+    by: xpath
+    locator: '//android.widget.FrameLayout[@resource-id="android:id/content"]/androidx.appcompat.widget.LinearLayoutCompat/android.widget.LinearLayout'
+
+  cancel_reason:
+    by: xpath
+    locator: //androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvReasons"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat 
+    
+  done:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtDone"]'
+
+  surcharge:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/label_cashSurcharge"]'
+  
+  surcharge_actual:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txt_noncashAdj"]'
+  
+  tip_button:
+    by: id
+    locator: 'com.pays.pos:id/tvAddTip'
+  
+  tip_option:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/{}"]'
+  
+  tip_amount:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edtAmount"]'
+  
+  save_tip:
+    by: id
+    locator: 'com.pays.pos:id/txtSave'
+  
+  save_refund:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvSave"]'
+
+  ref_parent:
+    by: xpath
+    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/llRefundAmount"]'
+
+  tot_parent_card:
+    by: xpath
+    locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/linear_summary"]/android.widget.LinearLayout/androidx.appcompat.widget.LinearLayoutCompat[4]'
+
+  tip_parent:
+   by: xpath
+   locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/linear_summary"]/android.widget.LinearLayout/androidx.appcompat.widget.LinearLayoutCompat[3]'
+
+  tot_parent_cash:
+    by: xpath
+    locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/linear_summary"]/android.widget.LinearLayout/androidx.appcompat.widget.LinearLayoutCompat[3]'
+
+  card_amount:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvCard"]'
+
+  credit_card_button:
+    by: xpath
+    locator: "//androidx.appcompat.widget.LinearLayoutCompat[@resource-id='com.pays.pos:id/llCreditCard']"
+  
+  home_button:
+    by: xpath
+    locator: "//android.widget.TextView[@resource-id='com.pays.pos:id/llHome']"
+
+  cash_amount:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvCash"]'
+  
+loyality:
+
+  phone:
+    by: android_uiautomator
+    locator: 'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("{phone}"))'
+
+  customers:
+    by: xpath
+    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linearCustomers"]'
+
+  loyality_points_locator:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtrewardpoint"]'
+
+  loyality_checkbox:
+    by: xpath
+    locator: '//android.widget.CheckBox[@resource-id="com.pays.pos:id/checkloylaty"]'
+  
+  loyality_using:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtLoyaltyAmount"]'
+
+split:
+  splitting_button:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tab2"]'
+
+  two_ways:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tv2ways"]'  
+
+  next_button:
+    by: xpath
+    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linear_next_split"]'
+
+  next_split:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/llNoReceipt"]'
+  
+dining:
+  floor_plan:
+   by: xpath
+   locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtFloorPlan"]'
+  wastage_count:
+    by: xpath
+    locator: '(//android.widget.ImageView[@resource-id="com.pays.pos:id/ivWastage"])'
+
+  wastage_icon:
+    by: xpath
+    locator: '(//android.widget.ImageView[@resource-id="com.pays.pos:id/ivWastage"])[{}]'
+  remove_guests:
+    by: xpath
+    locator: '(//android.widget.LinearLayout[@resource-id="com.pays.pos:id/llRemoveGuest"])[1]'
+  remove_last_guest:
+    by: xpath
+    locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/llRemoveGuest"]'
+
+  add_guests:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txt_addguest"]'
+
+  update_order:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtEditOrder"]'
+
+  fire: 
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtFireAll"]'
+
+  checkbox:
+    by: xpath
+    locator: '(//android.widget.CheckBox[@resource-id="com.pays.pos:id/checkedForFireHeader"])[1]'
+
+  printer_unique_number:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edtSplitNo"]'
+
+  edit_printer:
+    by: xpath
+    locator: '(//android.widget.ImageView[@resource-id="com.pays.pos:id/imgEdit"])[2]'
+
+  dine_switch:
+    by: xpath
+    locator: '(//android.widget.Switch[@resource-id="com.pays.pos:id/chBoxKitchenManual2"])[6]'
+
+  dine_in:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Dine In"]'
+
+  square_table:
+    by: xpath
+    locator: '(//android.widget.LinearLayout[@resource-id="com.pays.pos:id/llMainParentSquare"])'
+  
+  round_table:
+    by: xpath
+    locator: '(//android.widget.LinearLayout[@resource-id="com.pays.pos:id/llMainParentRound"])'
+
+  guest_list:
+    by: xpath
+    locator: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCartDineIn"]/android.widget.LinearLayout'
+  
+  proceed_to_fire:
+    by: xpath
+    locator: '//android.widget.RelativeLayout[@resource-id="com.pays.pos:id/relPreoceedToFire"]'
+  
+  checkout:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/llCheckOut"]'
+  
+  assign_customers:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/title" and @text="Assign Customer"]'
+
+  adding_cust_one:
+    by: xpath
+    locator: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCustomerList"]/androidx.appcompat.widget.LinearLayoutCompat[1]'
+  
+  merge_table:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txt_merge"]'
+
+  spinnerFloor:
+    by: xpath
+    locator: '//android.widget.Spinner[@resource-id="com.pays.pos:id/dropdownSpinnerFloor"]'
+
+  first_floor:
+    by: xpath
+    locator: '//android.widget.CheckedTextView[@resource-id="android:id/text1" and @text="First Floor"]'
+
+  spinnerTable:
+    by: xpath
+    locator: '//android.widget.Spinner[@resource-id="com.pays.pos:id/dropdownSpinnerTable"]'
+
+  first_table:
+    by: xpath
+    locator: '//android.widget.CheckedTextView[@resource-id="android:id/text1" and @text="Table-1"]'
+
+  merging_floor:
+    by: xpath
+    locator: '//android.widget.Spinner[@resource-id="com.pays.pos:id/spnFloorName"]'
+  
+  second_floor:
+    by: xpath
+    locator: '//android.widget.CheckedTextView[@resource-id="android:id/text1" and @text="Second Floor"]'
+
+  merging_table:
+    by: xpath
+    locator: '//android.widget.Spinner[@resource-id="com.pays.pos:id/spnTable"]'
+  
+  third_table:
+    by: xpath
+    locator: '//android.widget.CheckedTextView[@resource-id="android:id/text1" and @text="Table-3"]'
+
+  merged_tables_selection:
+    by: xpath
+    locator: '(//android.widget.LinearLayout[@resource-id="com.pays.pos:id/llMainParentSquare"])[1]'
+
+cash_log:
+  cash_drawer_amt:
+    by: id
+    locator: "com.pays.pos:id/txtCashDrawerAmount"
+
+  cash_log_button:
+    by: xpath
+    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linearCashLog"]'
+
+  cash_out_amt:
+    by: id
+    locator: "com.pays.pos:id/txt"
+  
+  cash_in_amt:
+    by: xpath
+    locator: '//android.widget.TextView[@text="Cash In AMT"]/following-sibling::*[1]'
+
+  change_amount:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtChangeAmount"]'
+

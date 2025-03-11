@@ -1,0 +1,104 @@
+test_takeout_cash:
+  full_test_path: "suits/test_orderflows/test_takeout_cash.py"
+  cases:
+    - name: "📌 Select Open Order"
+      function: "test_take_out_btn"
+    - name: "🛒 Add Multiple Items to Cart"
+      function: "test_adding_items"
+    - name: "💲 Apply Discount"
+      function: "test_add_discount"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
+    - name: "📜 Validate Transaction Details"
+      function: "test_transaction"
+
+test_takeout_card:
+  full_test_path: "suits/test_orderflows/test_takeout_card.py"
+  cases:
+    - name: "📌 Select Open Order"
+      function: "test_take_out_btn"
+    - name: "📡 Connect to PAX Terminal"
+      function: "test_pax_connection"
+    - name: "💳 Verify Card Price Hike"
+      function: "test_card_price_hike"
+    - name: "💰 Verify Tip Calculation"
+      function: "test_tip_added"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
+    - name: "📜 Validate Transaction Details"
+      function: "test_transaction"
+
+test_phoneorder_cash:
+  full_test_path: "suits/test_orderflows/test_phoneorder_cash.py"
+  cases:
+    - name: "📌 Phone order"
+      function: "test_phoneorder_cash_payment"
+    
+    - name: "🛒 Phone Order save and pay"
+      function: "test_phoneorder_save_pay"
+    
+    - name: "💲 Phone Order Update and Pay"
+      function: "test_phoneorder_update_pay"
+    
+    - name: "✅ Phone Order Cancel"
+      function: "test_phoneorder_cancel_order"
+
+test_phoneorder_card:
+  full_test_path: "suits/test_orderflows/test_phoneorder_card.py"
+  cases:
+    - name: "📌 Select Open Order"
+      function: "test_take_out_btn"
+    - name: "📡 Connect to PAX Terminal"
+      function: "test_pax_connection"
+    - name: "💳 Verify Card Price Hike"
+      function: "test_card_price_hike"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
+
+test_stay:
+  full_test_path: "suits/test_orderflows/test_stay.py"
+  cases:
+    - name: "📌 Select Stay Order"
+      function: "test_stay_order_btn"
+    - name: "🛒 Add Items to Cart"
+      function: "test_adding_items"
+    - name: "🛠 Update Item Quantity"
+      function: "test_updating_item"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
+
+test_openorder_cash:
+  full_test_path: "suits/test_orderflows/test_openorder_cash.py"
+  cases:
+    - name: "📌 Select Open Order"
+      function: "test_take_out_btn"
+    - name: "🛒 Add Items to Cart"
+      function: "test_adding_items"
+    - name: "💲 Apply Discount"
+      function: "test_add_discount"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
+
+test_openorder_card:
+  full_test_path: "suits/test_orderflows/test_openorder_card.py"
+  cases:
+    - name: "📌 Select Open Order"
+      function: "test_take_out_btn"
+    - name: "📡 Connect to PAX Terminal"
+      function: "test_pax_connection"
+    - name: "💳 Verify Card Price Hike"
+      function: "test_card_price_hike"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
+
+test_dining:
+  full_test_path: "suits/test_orderflows/test_dining.py"
+  cases:
+    - name: "📌 Select Dining Order"
+      function: "test_dining_order_btn"
+    - name: "🛒 Add Items to Cart"
+      function: "test_adding_items"
+    - name: "📝 Add a Note"
+      function: "test_add_note"
+    - name: "✅ Complete Payment"
+      function: "test_final_pay"
