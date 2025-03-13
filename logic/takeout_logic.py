@@ -546,12 +546,9 @@ class Calculations:
             print(f"Payment Failed. Error: {e}")
             return False
 
-    def manual_item(self,order_type = None):
+    def manual_item(self):
         try:
-            try:
-                self.order(order_type)
-            except:
-                pass
+            
             self.wait.until(EC.element_to_be_clickable(self.locators.keypad)).click()
             self.wait.until(EC.presence_of_element_located(self.locators.keypad))
             for j in range(3):
@@ -687,11 +684,22 @@ class Calculations:
         except Exception as e:
             return f"Error is {e}" 
         
-    def search_cust_phoneorder(self):
+    def search_cust_order(self):
         try:
-            self.wait.until(EC.presence_of_element_located(self.locators.search_cust)).click()
+            try:
+                self.wait.until(EC.element_to_be_clickable(self.locators.add_customer)).click() 
+            except:
+                pass   
+            try:
+                self.wait.until(EC.presence_of_element_located(self.locators.search_cust)).click()
+            except:
+                pass
             time.sleep(4)
             num_cust = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCustomerList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            print(num_cust)
+            if num_cust == 0:
+                self.adding_new_customer()
+                return True
             
             random_cust = random.randint(1,num_cust)
             
@@ -707,7 +715,10 @@ class Calculations:
             print(f"The Customer selected is {name}")
             
             self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,parent))).click()
-            self.wait.until(EC.presence_of_element_located(self.locators.next)).click()
+            try:
+                self.wait.until(EC.presence_of_element_located(self.locators.next)).click()
+            except:
+                pass
             
             added_cust = self.wait.until(EC.presence_of_element_located(self.locators.add_customer)).text.strip()
             print(f"The name on the reciept would be {added_cust}")

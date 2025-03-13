@@ -80,7 +80,7 @@ class Split_cash:
                         
             self.wait.until(EC.presence_of_element_located(self.locators.two_ways)).click()
                         
-            self.wait.until(EC.presence_of_element_located(self.locators.next_button)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.next_button_split)).click()
             if tip != None:
                 self.calc.tip()
             

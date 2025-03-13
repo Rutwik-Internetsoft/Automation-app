@@ -20,7 +20,7 @@ if project_root not in sys.path:
 class AppiumDriver:
     def __init__(self):
         self.driver = None
-        self.url = 'http://127.0.0.1:4723'
+        self.url = "http://192.168.56.1:4723"
         self.caps: Dict[str, Any] = {
             "platformName": "Android",
             "appium:deviceName": "TS43223941452",
@@ -109,6 +109,6 @@ def capture_screenshot_on_failure(request, appium_driver):
 
 def pytest_configure(config):
     """Automatically set Allure results directory without requiring --alluredir."""
-    allure_results_dir = "allure-report/allure-results"
+    allure_results_dir = "allure-results"
     os.makedirs(allure_results_dir, exist_ok=True)  # Ensure the directory exists
     config.option.allure_report_dir = allure_results_dir

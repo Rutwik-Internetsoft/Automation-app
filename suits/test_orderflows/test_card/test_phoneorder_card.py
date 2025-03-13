@@ -24,7 +24,7 @@ class TestPhoneOrderCard:
     def test_phoneorder_card_payment(self):
         
         assert self.phone.order("Phone Order") == True
-        assert self.phone.search_cust_phoneorder() == True
+        assert self.phone.search_cust_order() == True
         assert self.phone.add_multiple_items(2) is True
         
         assert self.phone.card_payment() == True
@@ -37,7 +37,7 @@ class TestPhoneOrderCard:
     def test_phoneorder_save_pay(self):
         
         assert self.phone.order("Phone Order") == True
-        assert self.phone.search_cust_phoneorder() == True
+        assert self.phone.search_cust_order() == True
         assert self.phone.add_multiple_items(3)
         assert self.phone.add_discount()
         print("===================Checking=================")
@@ -67,7 +67,7 @@ class TestPhoneOrderCard:
         assert self.phone.order("Phone Order") == True
         print("===================Checking=================")
 
-        assert self.phone.search_cust_phoneorder() == True
+        assert self.phone.search_cust_order() == True
         assert self.phone.add_multiple_items(3)
         assert self.phone.save_order(process = "Update") == True
         
@@ -98,7 +98,7 @@ class TestPhoneOrderCard:
     def test_phoneorder_cancel_order(self):
         
         assert self.phone.order("Phone Order") == True
-        assert self.phone.search_cust_phoneorder() == True
+        assert self.phone.search_cust_order() == True
         assert self.phone.add_multiple_items(3)
         assert self.phone.save_order("Cancel") == True
         

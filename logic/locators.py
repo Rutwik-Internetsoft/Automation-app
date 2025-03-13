@@ -188,7 +188,7 @@ class Locators(LocatorLoader):
         """Store and retrieve all split-related locators."""
         self.splitting_button = self.locator_loader.get_locator("splitting_button", "split")
         self.two_ways = self.locator_loader.get_locator("two_ways", "split")
-        self.next_button = self.locator_loader.get_locator("next_button", "split")
+        self.next_button_split = self.locator_loader.get_locator("next_button", "split")
         self.next_split = self.locator_loader.get_locator("next_split", "split")
 
     def dining(self):

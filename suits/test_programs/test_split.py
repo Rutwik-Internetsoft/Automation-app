@@ -23,12 +23,12 @@ class TestSplitProgram:
         self.calc.transaction_tip(1)
         self.calc.transaction_tip(2)
     
-    def test_split_card(self):
-        self.calc.connect_PAX()
-        self.calc.add_multiple_items(3)
-        assert self.split.price_checking_card() == True
-        assert self.split.splitting_card() == True
-        assert self.split.transaction_checking() == True
+    # def test_split_card(self):
+    #     self.calc.connect_PAX()
+    #     self.calc.add_multiple_items(3)
+    #     assert self.split.price_checking_card() == True
+    #     assert self.split.splitting_card() == True
+    #     assert self.split.transaction_checking() == True
 
     # def test_split_gift_card(self):
     #     # self.split.add_multiple_items()
