@@ -1,31 +1,40 @@
 import streamlit as st
-from webapp.phoneorderapp import PhoneOrderApp
+from logicclass import LogicOfApp
+import os, sys
+
+# Ensure the project root is in sys.path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+# 🔹 Define ORDER TYPES and PAYMENT METHODS
+ORDER_TYPES = {
+    "phoneorder": {"name": "Phone Order", "methods": ["cash", "card"]},
+    "takeoutorder": {"name": "Takeout Order", "methods": ["cash", "card"]},
+    "dineinorder": {"name": "Dine-in Order", "methods": ["cash", "card"]},
+    "openorder": {"name": "Open Order", "methods": ["cash", "card"]},
+    "stayorder": {"name": "Stay Order", "methods": ["cash","card"]}
+}
 
 def main():
     st.title("Test Execution Dashboard")
-    app = PhoneOrderApp()
+    app = LogicOfApp()
 
     if "page" not in st.session_state:
         st.session_state.page = "home"
 
     if st.session_state.page == "home":
         st.subheader("Orders")
-        if st.button("📞 Phone Order"):
-            st.session_state.page = "phone_order"
-            st.rerun()
+        for order_type, details in ORDER_TYPES.items():
+            if st.button(f"📦 {details['name']}"):
+                st.session_state.page = order_type
+                st.rerun()
 
-    elif st.session_state.page == "phone_order":
-        app.phone_order()
+    elif st.session_state.page in ORDER_TYPES:
+        app.order_selection(st.session_state.page)
 
-    elif st.session_state.page in ["test_phoneorder_cash", "test_phoneorder_card"]:
-
-        # 🔹 Fetch order type dynamically from session state
-        order_type = "test_phoneorder_cash" if st.session_state.page == "phone_order_cash" else "test_phoneorder_card"
-        
-        # 🔹 Debug: Show selected order type
-        
-        # 🔹 Call the correct test execution function
-        app.phone_order_test_execution(order_type)
+    elif st.session_state.page.startswith("test_"):
+        app.test_execution(st.session_state.page)
 
 if __name__ == "__main__":
     main()

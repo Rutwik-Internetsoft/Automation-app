@@ -6,12 +6,16 @@ from typing import Dict, Any
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
 from logic.dependencies import Dependencies
+from appium.webdriver.common.appiumby import AppiumBy
+import time
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from appium.webdriver.common.appiumby import AppiumBy
+
+# ========================= Appium =========================
+
 
 class AppiumDriver:
     def __init__(self):
@@ -28,7 +32,9 @@ class AppiumDriver:
             "appium:ensureWebviewsHavePages": True,
             "appium:nativeWebScreenshot": True,
             "appium:newCommandTimeout": 3600,
-            "appium:connectHardwareKeyboard": True
+            "appium:connectHardwareKeyboard": True,
+            "allowInsecure": ["adb_shell"]
+
         }
 
     def start_driver(self):
@@ -43,6 +49,8 @@ class AppiumDriver:
             self.driver.quit()
             self.driver = None
 
+# ========================= Appium Driver Instance =========================
+
 @pytest.fixture(scope="session")
 def appium_driver():
     """Session-scoped Appium driver fixture."""
@@ -51,6 +59,17 @@ def appium_driver():
     yield driver
     driver_instance.stop_driver()
 
+
+# ========================= Screenshot on Failure =========================
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """Hook to detect if a test has failed and restart MainActivity if necessary."""
+    outcome = yield
+    report = outcome.get_result()
+    setattr(item, "rep_" + report.when, report)
+
+
+# ========================= Login Pluggin =========================
 
 @pytest.fixture(scope="session", autouse=True)
 @allure.story("User Login & Authentication")
@@ -75,15 +94,6 @@ def login_once(appium_driver):
     except Exception as e:
         pass
 
-
-# ========================= Screenshot on Failure =========================
-@pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
-    """Hook to detect if a test has failed and mark it for later use in fixtures."""
-    outcome = yield
-    report = outcome.get_result()
-    setattr(item, "rep_" + report.when, report)
-
 @pytest.fixture(autouse=True)
 def capture_screenshot_on_failure(request, appium_driver):
     """Captures a screenshot on test failure and attaches it to Allure report."""
@@ -96,3 +106,9 @@ def capture_screenshot_on_failure(request, appium_driver):
         appium_driver.get_screenshot_as_file(screenshot_path)  # Take screenshot
         
         allure.attach.file(screenshot_path, name=f"Screenshot_{request.node.name}", attachment_type=allure.attachment_type.PNG)
+
+def pytest_configure(config):
+    """Automatically set Allure results directory without requiring --alluredir."""
+    allure_results_dir = "allure-report/allure-results"
+    os.makedirs(allure_results_dir, exist_ok=True)  # Ensure the directory exists
+    config.option.allure_report_dir = allure_results_dir

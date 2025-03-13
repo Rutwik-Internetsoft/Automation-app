@@ -1,104 +1,223 @@
-test_takeout_cash:
-  full_test_path: "suits/test_orderflows/test_takeout_cash.py"
-  cases:
-    - name: "📌 Select Open Order"
-      function: "test_take_out_btn"
-    - name: "🛒 Add Multiple Items to Cart"
-      function: "test_adding_items"
-    - name: "💲 Apply Discount"
-      function: "test_add_discount"
-    - name: "✅ Complete Payment"
-      function: "test_final_pay"
-    - name: "📜 Validate Transaction Details"
-      function: "test_transaction"
-
-test_takeout_card:
-  full_test_path: "suits/test_orderflows/test_takeout_card.py"
-  cases:
-    - name: "📌 Select Open Order"
-      function: "test_take_out_btn"
-    - name: "📡 Connect to PAX Terminal"
-      function: "test_pax_connection"
-    - name: "💳 Verify Card Price Hike"
-      function: "test_card_price_hike"
-    - name: "💰 Verify Tip Calculation"
-      function: "test_tip_added"
-    - name: "✅ Complete Payment"
-      function: "test_final_pay"
-    - name: "📜 Validate Transaction Details"
-      function: "test_transaction"
-
 test_phoneorder_cash:
-  full_test_path: "suits/test_orderflows/test_phoneorder_cash.py"
+  full_test_path: "suits/test_orderflows/test_cash/test_phoneorder_cash.py"
   cases:
-    - name: "📌 Phone order"
+
+    - name: "📌 Normal Phone Order with Cash Payment"
       function: "test_phoneorder_cash_payment"
-    
-    - name: "🛒 Phone Order save and pay"
+
+    - name: "🛒 Save Order and then Pay"
       function: "test_phoneorder_save_pay"
-    
-    - name: "💲 Phone Order Update and Pay"
+
+    - name: "💲 Save, update, pay "
       function: "test_phoneorder_update_pay"
-    
-    - name: "✅ Phone Order Cancel"
+
+    - name: "📜 Cancel a Phone Order"
       function: "test_phoneorder_cancel_order"
 
 test_phoneorder_card:
-  full_test_path: "suits/test_orderflows/test_phoneorder_card.py"
+  full_test_path: "suits/test_orderflows/test_card/test_phoneorder_card.py"
   cases:
-    - name: "📌 Select Open Order"
-      function: "test_take_out_btn"
-    - name: "📡 Connect to PAX Terminal"
+
+    - name: "🔌 Connecting Pax"
       function: "test_pax_connection"
-    - name: "💳 Verify Card Price Hike"
-      function: "test_card_price_hike"
-    - name: "✅ Complete Payment"
+
+    - name: "📌 Normal Phone Order with Card Payment and Refund"
+      function: "test_phoneorder_card_payment"
+
+    - name: "🛒 Save Order and then Pay"
+      function: "test_phoneorder_save_pay"
+
+    - name: "💲 Save, update, pay "
+      function: "test_phoneorder_update_pay"
+
+    - name: "📜 Cancel a Phone Order"
+      function: "test_phoneorder_cancel_order"
+
+test_takeoutorder_cash:
+  full_test_path: "suits/test_orderflows/test_cash/test_takeout_cash.py"
+  cases:
+    - name: "📌 Click on takeout order button"
+      function: "test_take_out_btn"
+
+    - name: "🛒 Add three items"
+      function: "test_adding_items"
+
+    - name: "💲 Add Discount "
+      function: "test_add_discount"
+
+    - name: "📜 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "🧮Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "💰Add Tip"
+      function: "test_tip_added"
+
+    - name: "💵Pay with Cash"
       function: "test_final_pay"
 
-test_stay:
-  full_test_path: "suits/test_orderflows/test_stay.py"
+    - name: "📊Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄Check Full Refund"
+      function: "test_refund"
+
+test_takeoutorder_card:
+  full_test_path: "suits/test_orderflows/test_card/test_takeout_card.py"
   cases:
-    - name: "📌 Select Stay Order"
-      function: "test_stay_order_btn"
-    - name: "🛒 Add Items to Cart"
+
+    - name: "🔌 Connecting Pax"
+      function: "test_pax_connection"
+
+    - name: "📌 Click on takeout order button"
+      function: "test_take_out_btn"
+
+    - name: "🛒 Add three items"
       function: "test_adding_items"
-    - name: "🛠 Update Item Quantity"
-      function: "test_updating_item"
-    - name: "✅ Complete Payment"
+
+    - name: "💲 Add Discount"
+      function: "test_add_discount"
+
+    - name: "📝 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "🧮 Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "💳 Card price hike check"
+      function: "test_card_price_hike"
+
+    - name: "💰 Add Tip"
+      function: "test_tip_added"
+
+    - name: "💵 Pay with Cash"
       function: "test_final_pay"
+
+    - name: "📊 Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️ Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄 Check Full Refund"
+      function: "test_refund"
 
 test_openorder_cash:
-  full_test_path: "suits/test_orderflows/test_openorder_cash.py"
+  full_test_path: 'suits/test_orderflows/test_cash/test_openorder_cash.py'
   cases:
-    - name: "📌 Select Open Order"
-      function: "test_take_out_btn"
-    - name: "🛒 Add Items to Cart"
+    - name: "📌Click On Open Order Button"
+      function: "test_openorder_btn"
+
+    - name: "🛒 Add three items"
       function: "test_adding_items"
-    - name: "💲 Apply Discount"
+
+    - name: "💲 Add Discount "
       function: "test_add_discount"
-    - name: "✅ Complete Payment"
+
+    - name: "📜 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "Add Manual Item from key Pad"
+      function: "test_manual_item_and_qty"
+
+    - name: "Update quantity of random Item"
+      function: "test_updating_item"
+
+    - name: "🧮Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "💵Pay with Cash"
       function: "test_final_pay"
+
+    - name: "📊Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄Itemwise Refund"
+      function: "test_refund"
 
 test_openorder_card:
-  full_test_path: "suits/test_orderflows/test_openorder_card.py"
+  full_test_path: 'suits/test_orderflows/test_card/test_openorder_card.py'
   cases:
-    - name: "📌 Select Open Order"
-      function: "test_take_out_btn"
-    - name: "📡 Connect to PAX Terminal"
+    - name: "🔌 Connecting Pax"
       function: "test_pax_connection"
-    - name: "💳 Verify Card Price Hike"
-      function: "test_card_price_hike"
-    - name: "✅ Complete Payment"
+
+    - name: "📌Click On Open Order Button"
+      function: "test_openorder_btn"
+
+    - name: "🛒 Add three items"
+      function: "test_adding_items"
+
+    - name: "💲 Add Discount "
+      function: "test_add_discount"
+
+    - name: "📜 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "Add Manual Item from key Pad"
+      function: "test_manual_item_and_qty"
+
+    - name: "Update quantity of random Item"
+      function: "test_updating_item"
+
+    - name: "🧮Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "Add Tip"
+      function: "test_tip_added"
+
+    - name: "💵Pay with Card"
       function: "test_final_pay"
 
-test_dining:
-  full_test_path: "suits/test_orderflows/test_dining.py"
+    - name: "📊Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄Itemwise Refund"
+      function: "test_refund"
+test_stayorder_cash:
+  full_test_path: 'suits/test_orderflows/test_cash/test_stay_cash.py'
   cases:
-    - name: "📌 Select Dining Order"
-      function: "test_dining_order_btn"
-    - name: "🛒 Add Items to Cart"
-      function: "test_adding_items"
-    - name: "📝 Add a Note"
+    - name: "📌 Click On Stay Order Button"
+      function: "test_stayorder_btn"
+
+    - name: "⌨️ Add Manual Item from Keypad"
+      function: "test_manual_item_and_qty"
+    
+    - name: "🆕 Adding a New Customer"
+      function: "test_adding_customers"
+
+    - name: "🛒 Add Two Items"
+      function: "test_add_multiple_item"
+
+    - name: "🔄 Update Quantity of Random Item"
+      function: "test_updating_item"
+
+    - name: "💲 Add Discount"
+      function: "test_add_discount"
+
+    - name: "📝 Add Note to the Order"
       function: "test_add_note"
-    - name: "✅ Complete Payment"
-      function: "test_final_pay"
+
+    - name: "🧮 Transaction Calculation at Cart"
+      function: "test_pay_check"
+
+    - name: "📊 Calculate Card Price Hike"
+      function: "test_card_amt_hike_check"
+
+    - name: "💵 Calculate Cash Price Remaining Same"
+      function: "test_cash_amt_check"
+
+    - name: "✅ Final Payment"
+      function: "test_cash_pay"
+
+    - name: "🔄 Itemwise Refund"
+      function: "test_refund"

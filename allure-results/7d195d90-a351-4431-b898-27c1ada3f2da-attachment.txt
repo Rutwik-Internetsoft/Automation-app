@@ -1,0 +1,3 @@
+Adding Discount
+('xpath', '//android.widget.ImageView[@content-desc="Menu"]')
+DISCOUNT ADDED SUCCESSFULLY

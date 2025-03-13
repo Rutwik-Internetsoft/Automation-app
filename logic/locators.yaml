@@ -2,6 +2,7 @@ common:
   tvAmt:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvTotalAmount"]'
+
   cancel:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCancelOrder"]'
@@ -33,9 +34,11 @@ common:
   surname_field:
     by: id
     locator: "com.pays.pos:id/edtLName"
+
   phone_field:
     by: id
     locator: "com.pays.pos:id/edtPhoneNo"
+
   email_field:
     by: id
     locator: "com.pays.pos:id/edtEmail"
@@ -63,6 +66,7 @@ common:
   open_oder:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Open Order"]'
+
   end_tip:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvtipadd"]'
@@ -82,6 +86,7 @@ common:
   disconnect_pax:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvDisconnectPax"]'
+
   next:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtNext"]'
@@ -202,6 +207,10 @@ common:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCheckBalance"]'
 
+  search_cust:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/etSearch"]'
+
 login_page:
   username_field:
     by: id
@@ -229,6 +238,12 @@ login_page:
 
 calculations:
 
+  order_1:
+    by: xpath
+    locator: '(//android.widget.TextView[@resource-id="com.pays.pos:id/tvOrderType"])[1]'
+  refund_button:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvIssueRefund"]'
 
   plus_button:
     by: xpath

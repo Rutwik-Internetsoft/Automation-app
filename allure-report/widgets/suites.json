@@ -1,1 +1,1 @@
-{"total":0,"items":[]}
+{"total":17,"items":[{"uid":"9e5094a44205b50c2bd66c59e536d889","name":"suits.test_orderflows.test_cash","statistic":{"failed":1,"broken":0,"skipped":0,"passed":33,"unknown":0,"total":34}},{"uid":"09838f85705c802cff3529f314d892a0","name":"suits.test_orderflows.test_card","statistic":{"failed":1,"broken":0,"skipped":0,"passed":31,"unknown":0,"total":32}}]}

@@ -209,7 +209,6 @@ class Calculations:
     def add_discount(self):
         try:
             print("Adding Discount")
-            print(self.locators.discount_menu)
 
             discount_menu = self.wait.until(EC.presence_of_element_located(self.locators.discount_menu))
             discount_menu.click()
@@ -280,8 +279,9 @@ class Calculations:
                 num = random.randint(1,items)
                 self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,f'(//android.widget.ImageView[@resource-id="com.pays.pos:id/ivCheck"])[{num}]'))).click()
                 
-                refunded_amount = float(self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,f'(//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linearLayoutCompat"])[{num}]/androidx.appcompat.widget.LinearLayoutCompat/android.widget.LinearLayout/following-sibling::*'))).text.strip().replace("$",""))
-                print(refunded_amount)
+                itm_amount = float(self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,f'(//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linearLayoutCompat"])[{num}]/androidx.appcompat.widget.LinearLayoutCompat/android.widget.LinearLayout/following-sibling::*'))).text.strip().replace("$",""))
+                
+                print(f"The Item that user is not refunding is of {itm_amount}$\n")
                 self.long_wait.until(EC.element_to_be_clickable(self.locators.done)).click()
                 time.sleep(2)
                 self.long_wait.until(EC.element_to_be_clickable(self.locators.done)).click()
@@ -300,7 +300,7 @@ class Calculations:
                 refund_amount = float(text_views[1].text.strip().replace("$",""))
                 
                 print("refunded Amount ", refund_amount)
-                
+                total_refunded_amount = itm_amount + refund_amount
                 total_value_parent = self.wait.until(EC.presence_of_element_located(self.locators.tot_parent_cash))
 
                 text_view = total_value_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")
@@ -308,10 +308,10 @@ class Calculations:
                 paid_amount = float(text_view[1].text.strip().replace("$",""))
                 print(paid_amount)
                 
-                if (abs(paid_amount-(refund_amount + refunded_amount)))<=0.3:
+                if (abs(paid_amount - total_refunded_amount))<=0.3:
                     self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
                     if cash_log == "cash_log":
-                        return refunded_amount
+                        return itm_amount
                     return True
                 else:
                     return False
@@ -322,10 +322,15 @@ class Calculations:
 
     def cash_refund(self,cash_log = None):
         try:
+            try:
+                self.long_wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
+            except:
+                pass
+
+            self.wait.until(EC.presence_of_element_located(self.locators.order_1)).click()
             
-            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'(//android.widget.TextView[@resource-id="com.pays.pos:id/tvOrderType"])[1]'))).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.refund_button)).click()
             
-            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'//android.widget.TextView[@resource-id="com.pays.pos:id/tvIssueRefund"]'))).click()
             
             print("Refund Initiated")
             
@@ -379,9 +384,13 @@ class Calculations:
 
     def card_refund(self):
         try:
-            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'(//android.widget.TextView[@resource-id="com.pays.pos:id/tvOrderType"])[1]'))).click()
+            try:
+                self.long_wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
+            except:
+                pass
+            self.wait.until(EC.presence_of_element_located(self.locators.order_1)).click()
             
-            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'//android.widget.TextView[@resource-id="com.pays.pos:id/tvIssueRefund"]'))).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.refund_button)).click()
             
             print("Refund Initiated")
         
@@ -390,25 +399,26 @@ class Calculations:
                 self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
                 self.wait.until(EC.presence_of_element_located(self.locators.save_refund)).click()
             except:
-                pass
+                return "Could'nt save the refund"
             
             try:
                 print("final Check")
                 refunded_value_parent = self.wait.until(EC.presence_of_element_located(self.locators.ref_parent))
                                 
                 text_views = refunded_value_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")
-                print(text_views)
                 
                 refund_amount = float(text_views[1].text.strip().replace("$",""))
-                print(refund_amount)
+                print(f" The Refunded Amount is {refund_amount}\n")
                 
                 total_value_parent = self.wait.until(EC.presence_of_element_located(self.locators.tot_parent_card))
                 
                 text_view = total_value_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")                
                 paid_amount = float(text_view[1].text.strip().replace("$",""))
-                print(paid_amount)
+                print(f"The Customer paid {paid_amount}")
                 
+                print(f"Checking if both amounts are same")
                 if paid_amount==refund_amount:
+                    print("The refunded Amount and Paid amount are same \n Test Passed")    
                     self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
                     return True
                 else:
@@ -423,11 +433,11 @@ class Calculations:
         try:
             
             try:
-                order_text = self.wait.until(EC.presence_of_element_located(self.locators.transaction_order_type)).text
+                order_text = self.short_wait.until(EC.presence_of_element_located(self.locators.transaction_order_type)).text
             except:
                 pass
             try:
-                order_text = self.wait.until(EC.presence_of_element_located(self.locators.current_order_type)).text.strip().replace("Current Order: ","")
+                order_text = self.short_wait.until(EC.presence_of_element_located(self.locators.current_order_type)).text.strip().replace("Current Order: ","")
             except:
                 pass    
             print(order_text)
@@ -677,6 +687,40 @@ class Calculations:
         except Exception as e:
             return f"Error is {e}" 
         
+    def search_cust_phoneorder(self):
+        try:
+            self.wait.until(EC.presence_of_element_located(self.locators.search_cust)).click()
+            time.sleep(4)
+            num_cust = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCustomerList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            
+            random_cust = random.randint(1,num_cust)
+            
+            parent = f'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCustomerList"]/androidx.appcompat.widget.LinearLayoutCompat[{random_cust}]/androidx.appcompat.widget.LinearLayoutCompat'
+
+            parent_element = self.driver.find_element(AppiumBy.XPATH,parent)
+
+            name_element = parent_element.find_element(AppiumBy.ID, "com.pays.pos:id/txtName")
+                        # Extract the text
+            name_text = name_element.text.strip()  # Remove extra spaces
+            name = " ".join(name_text.split()[:2]) if name_text else "No name available"
+
+            print(f"The Customer selected is {name}")
+            
+            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,parent))).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.next)).click()
+            
+            added_cust = self.wait.until(EC.presence_of_element_located(self.locators.add_customer)).text.strip()
+            print(f"The name on the reciept would be {added_cust}")
+            if added_cust == name:
+                print("Both the names are same")
+                print("Test Passed")
+                return True
+            else:
+                print(f"The names are not same {added_cust} != {name}")
+                return False
+        except Exception as e:
+            return f"Error is {e}"      
+    
     def cash_payment(self):
         to_pay = self.pay()
         cash_amount_final = self.cash_amount()

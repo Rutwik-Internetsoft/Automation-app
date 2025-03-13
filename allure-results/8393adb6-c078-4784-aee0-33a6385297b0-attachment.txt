@@ -1,0 +1,3 @@
+Total price is  144.87
+Transaction amount is  144.87
+13.170000000000002

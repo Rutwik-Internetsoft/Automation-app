@@ -1,0 +1,1 @@
+{"name": "Apply Discount to the Order", "status": "passed", "description": "Validates that a discount can be applied to an order.", "start": 1741862322679, "stop": 1741862332324, "uuid": "987626e9-5af4-4399-ad96-be2f22a4fb05", "testCaseId": "f2929d02fde52f9ea38a653badf0ea85", "fullName": "suits.test_orderflows.test_cash.test_openorder_cash.TestOpenOrderCash#test_add_discount"}

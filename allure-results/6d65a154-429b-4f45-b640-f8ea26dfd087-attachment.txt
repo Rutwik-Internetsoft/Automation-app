@@ -1,0 +1,3 @@
+Sub total is 9.4
+Total Price 11.4
+ Card Calculation Test passed.

@@ -1,0 +1,5 @@
+Refund Initiated
+final Check
+refunded Amount  11.4
+13.68
+[<appium.webdriver.webelement.WebElement (session="2101b637-c5f6-4b14-9697-9f12dc235b92", element="00000000-0000-0309-ffff-ffff000013ed")>, <appium.webdriver.webelement.WebElement (session="2101b637-c5f6-4b14-9697-9f12dc235b92", element="00000000-0000-0309-ffff-ffff000013ee")>]

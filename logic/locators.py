@@ -62,7 +62,7 @@ class LocatorLoader:
 class Locators(LocatorLoader):
     
     def __init__(self):
-        locator_file="C:/Users/rutwik/Automation/logic/locators.yaml"
+        locator_file="logic/locators.yaml"
         self.locator_loader = LocatorLoader(locator_file=locator_file)
     
     def get_locator(self, key, section, **kwargs):
@@ -70,6 +70,8 @@ class Locators(LocatorLoader):
 
     def calculations_locators(self):
         """Store and retrieve all calculation-related locators."""
+        self.refund_button  = self.locator_loader.get_locator("refund_button","calculations")
+        self.order_1 = self.locator_loader.get_locator("order_1","calculations")
         self.tip_parent = self.locator_loader.get_locator("tip_parent","calculations")
         self.cancel_reason = self.locator_loader.get_locator("cancel_reason","calculations")
         self.add_item_note = self.locator_loader.get_locator("add_item_note","calculations")
@@ -161,6 +163,7 @@ class Locators(LocatorLoader):
         self.back_button = self.locator_loader.get_locator("back_button", "common")
         self.check_balance = self.locator_loader.get_locator("check_balance", "common")
         self.transaction_total_amt = self.locator_loader.get_locator("transaction_total_amt","common")
+        self.search_cust = self.locator_loader.get_locator("search_cust","common")
 
     def login_page_locators(self):
         
