@@ -279,6 +279,7 @@ calculations:
   items:
     by: xpath
     locator: '//android.widget.LinearLayout[@resource-id="com.pays.pos:id/linear_item"]'
+    #//androidx.recyclerview.widget.RecyclerView[@resource-id="com.internetsoft.pax:id/rvCategory"]/androidx.appcompat.widget.LinearLayoutCompat[1]
 
   modifiers_page:
     by: xpath
@@ -643,3 +644,37 @@ setup:
   delete_order:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/title" and @text="Delete Order"]'
+
+PAT:
+  email_login:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.internetsoft.pax:id/edtEmail"]'
+  
+  password_login:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.internetsoft.pax:id/edtPassword"]'
+
+  login: 
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.internetsoft.pax:id/txtSignIn"]'
+  
+  passcode: 
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.internetsoft.pax:id/circlePin"]'
+  
+  main_page:
+    by: xpath
+    locator: '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.internetsoft.pax:id/rv_checklist"]'
+
+  add_table:
+    by: xpath
+    locator: '//android.widget.ImageView[@resource-id="com.internetsoft.pax:id/img_add"]'
+
+  add_table_2:
+    by: xpath
+    locator: '(//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.internetsoft.pax:id/linear_table_main"])[2]/androidx.appcompat.widget.LinearLayoutCompat'
+
+  continue_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.internetsoft.pax:id/txt_continue"]'
+

@@ -5,9 +5,6 @@ import allure
 from typing import Dict, Any
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
-import subprocess
-from appium.webdriver.common.appiumby import AppiumBy
-import time
 from appium.webdriver.appium_service import AppiumService
 from logic.dependencies import Dependencies
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

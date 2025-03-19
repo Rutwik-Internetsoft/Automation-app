@@ -47,3 +47,28 @@
 2025-04-03T18:22:47.965897+0530 INFO Driver initialized for the test.
 2025-04-03T18:22:47.980815+0530 INFO Starting Tip Test in Cash Log
 2025-04-03T18:24:24.972848+0530 INFO Tip validation result: True
+2025-04-10T17:36:25.343344+0530 INFO Driver initialized for the test.
+2025-04-10T17:36:25.345252+0530 INFO Starting Cash Log Test
+2025-04-10T17:36:31.509046+0530 INFO Checked cash log successfully.
+2025-04-10T17:38:39.492225+0530 INFO Ordering validation result: True
+2025-04-10T17:38:39.593091+0530 INFO Driver initialized for the test.
+2025-04-10T17:38:39.594668+0530 INFO Starting Refund Test in Cash Log
+2025-04-10T17:39:21.614503+0530 INFO Refund validation result: Error as Message: 
+Stacktrace:
+NoSuchElementError: An element could not be located on the page using the given search parameters.
+    at AndroidUiautomator2Driver.findElOrEls (C:\Users\rutwik\.appium\node_modules\appium-uiautomator2-driver\node_modules\appium-android-driver\lib\commands\find.ts:86:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at AndroidUiautomator2Driver.findElOrElsWithProcessing (C:\Users\rutwik\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:60:12)
+    at AndroidUiautomator2Driver.findElement (C:\Users\rutwik\AppData\Roaming\npm\node_modules\appium\node_modules\@appium\base-driver\lib\basedriver\commands\find.ts:75:12)
+2025-04-10T17:39:22.509885+0530 INFO Driver initialized for the test.
+2025-04-10T17:39:22.511881+0530 INFO Starting Tip Test in Cash Log
+2025-04-10T17:46:47.054951+0530 INFO Driver initialized for the test.
+2025-04-10T17:46:47.086765+0530 INFO Starting Cash Log Test
+2025-04-10T17:46:57.862203+0530 INFO Checked cash log successfully.
+2025-04-10T17:47:40.713119+0530 INFO Ordering validation result: True
+2025-04-10T17:47:40.912047+0530 INFO Driver initialized for the test.
+2025-04-10T17:47:40.915083+0530 INFO Starting Refund Test in Cash Log
+2025-04-10T17:48:55.896263+0530 INFO Refund validation result: True
+2025-04-10T17:48:56.102132+0530 INFO Driver initialized for the test.
+2025-04-10T17:48:56.105115+0530 INFO Starting Tip Test in Cash Log
+2025-04-10T17:50:10.523670+0530 INFO Tip validation result: True

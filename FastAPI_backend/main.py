@@ -75,12 +75,7 @@ def individual_test_cases(test_script: str):
     if not test_case:
         raise HTTPException(status_code=400, detail="Test path missing in YAML!")
     return test_case
-    if test_script not in test_cases:
-        raise HTTPException(status_code=404, detail="Invalid order type!")
-    test_case = test_cases[test_script].get("cases")
-    if not test_case:
-        raise HTTPException(status_code=400, detail="Test path missing in YAML!")
-    return test_case
+
 
 @app.get("/order-selection/{order_type}")
 def get_order_selection(order_type: str):
@@ -113,6 +108,7 @@ def run_functional_test(full_suit_runner: str, case_function: str):
     if not test_path:
         raise HTTPException(status_code=400, detail="Test path missing in YAML!")
     return execute_test(["pytest", test_path,"-k",case_function,"-s"])
+
 @app.get("/run-test/{full_suit_runner}/{case_function}")
 def run_functional_test(full_suit_runner: str, case_function: str):
     if full_suit_runner not in test_cases:

@@ -261,5 +261,11 @@ class Locators(LocatorLoader):
         self.order_note_title = self.locator_loader.get_locator("order_note_title","setup")
         self.delete_order = self.locator_loader.get_locator("delete_order","setup")
         self.delete_btn = self.locator_loader.get_locator("tip_delete","setup")
+    def PAT(self):
+        self.email_login = self.locator_loader.get_locator("email_login","PAT")
+        self.password_login = self.locator_loader.get_locator("password_login","PAT")
+        self.login_PAT = self.locator_loader.get_locator("login","PAT")
+
+
         
         

@@ -19,31 +19,32 @@ class TestCashLog:
         self.wait = WebDriverWait(self.driver,5)
 
         
-    # def test_printer(self):
-    #     self.dining.connecting_printer()
+    def test_printer(self):
+        self.dining.connecting_printer()
     
-    # def test_dine_in(self):
-    #     assert self.dining.dine_in(1,1) == True
-    # def test_adding_items_to_whole_and_individuals(self):
-    #     assert self.dining.adding_items_dine_in() == True
+    def test_dine_in(self):
+        assert self.dining.dine_in(1,1) == True
+    
+    def test_adding_items_to_whole_and_individuals(self):
+        assert self.dining.adding_items_dine_in() == True
         
-    # def test_adding_new_guests(self):    
-    #     assert self.dining.add_guests() == True
+    def test_adding_new_guests(self):    
+        assert self.dining.add_guests() == True
         
-    # def test_firing_items(self):
-    #     assert self.dining.firing_items() == True
+    def test_firing_items(self):
+        assert self.dining.firing_items() == True
         
-    # def test_updating_order(self):    
-    #     assert self.dining.update_order() == True
+    def test_updating_order(self):    
+        assert self.dining.update_order() == True
         
-    # def test_adding_items_to_waste(self):
-    #     assert self.dining.wastage() == True
+    def test_adding_items_to_waste(self):
+        assert self.dining.wastage() == True
         
-    # def test_removing_guests(self):    
-    #     assert self.dining.remove_guests() == True
+    def test_removing_guests(self):    
+        assert self.dining.remove_guests() == True
         
-    # def test_individual_payment(self):
-    #     assert self.dining.paying_individually() == True
+    def test_individual_payment(self):
+        assert self.dining.paying_individually() == True
         
         #=====================Merge Dining Test======================
         
@@ -85,4 +86,28 @@ class TestCashLog:
         
     def test_individual_payments(self):
         assert self.dining.paying_individually("cash") == True
+    
+    #================Dininig spit====================
+    
+    def test_dine_in(self):
+        assert self.dining.dine_in(1,1) == True
+    
+    def test_adding_items_to_whole_and_individuals(self):
+        assert self.dining.adding_items_dine_in() == True
         
+    def test_adding_new_guests(self):    
+        assert self.dining.add_guests() == True
+        
+    def test_firing_items(self):
+        assert self.dining.firing_items() == True
+        
+    def test_updating_order(self):    
+        assert self.dining.update_order() == True
+        
+    def test_adding_items_to_waste(self):
+        assert self.dining.wastage() == True
+        
+    def test_removing_guests(self):    
+        assert self.dining.remove_guests() == True
+        
+    

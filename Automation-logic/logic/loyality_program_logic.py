@@ -16,8 +16,8 @@ class Loyality:
         self.locators.loyality_locators()
         test_deps = Dependencies(self.driver)
         self.calc = test_deps.get_calculations() 
-        self.number = "(754) 831-9219"
-        self.email = "Sophia4634@gmail.com"
+        self.number = "(857) 529-6855"
+        self.email = "louis@yopmail.com"
             
     def adding_customer(self):
         try:

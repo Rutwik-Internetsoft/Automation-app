@@ -1,0 +1,1 @@
+{"name": "Verify Cash Payment Amount", "status": "passed", "description": "Checks if the cash payment amount matches the expected total.", "start": 1744799697453, "stop": 1744799775241, "uuid": "f6f5887a-5e60-495e-9e19-6d31a63512f9", "testCaseId": "76908df022becddddc37ce38fa6d6418", "fullName": "suits.test_orderflows.test_cash.test_stay_cash.TestStayCash#test_cash_amt_check"}
