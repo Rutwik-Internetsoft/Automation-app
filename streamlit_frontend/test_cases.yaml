@@ -1,0 +1,224 @@
+test_phoneorder_cash:
+  full_test_path: "Automation-logic/suits/test_orderflows/test_cash/test_phoneorder_cash.py"
+  cases:
+
+    - name: "📌 Normal Phone Order with Cash Payment"
+      function: "test_phoneorder_cash_payment"
+
+    - name: "🛒 Save Order and then Pay"
+      function: "test_phoneorder_save_pay"
+
+    - name: "💲 Save, update, pay "
+      function: "test_phoneorder_update_pay"
+
+    - name: "📜 Cancel a Phone Order"
+      function: "test_phoneorder_cancel_order"
+
+test_phoneorder_card:
+  full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_phoneorder_card.py"
+  cases:
+
+    - name: "🔌 Connecting Pax"
+      function: "test_pax_connection"
+
+    - name: "📌 Normal Phone Order with Card Payment and Refund"
+      function: "test_phoneorder_card_payment"
+
+    - name: "🛒 Save Order and then Pay"
+      function: "test_phoneorder_save_pay"
+
+    - name: "💲 Save, update, pay "
+      function: "test_phoneorder_update_pay"
+
+    - name: "📜 Cancel a Phone Order"
+      function: "test_phoneorder_cancel_order"
+
+test_takeoutorder_cash:
+  full_test_path: "Automation-logic/suits/test_orderflows/test_cash/test_takeout_cash.py"
+  cases:
+    - name: "📌 Click on takeout order button"
+      function: "test_take_out_btn"
+
+    - name: "🛒 Add three items"
+      function: "test_adding_items"
+
+    - name: "💲 Add Discount "
+      function: "test_add_discount"
+
+    - name: "📜 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "🧮Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "💰Add Tip"
+      function: "test_tip_added"
+
+    - name: "💵Pay with Cash"
+      function: "test_final_pay"
+
+    - name: "📊Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄Check Full Refund"
+      function: "test_refund"
+
+test_takeoutorder_card:
+  full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_takeout_card.py"
+  cases:
+
+    - name: "🔌 Connecting Pax"
+      function: "test_pax_connection"
+
+    - name: "📌 Click on takeout order button"
+      function: "test_take_out_btn"
+
+    - name: "🛒 Add three items"
+      function: "test_adding_items"
+
+    - name: "💲 Add Discount"
+      function: "test_add_discount"
+
+    - name: "📝 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "🧮 Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "💳 Card price hike check"
+      function: "test_card_price_hike"
+
+    - name: "💰 Add Tip"
+      function: "test_tip_added"
+
+    - name: "💵 Pay with Cash"
+      function: "test_final_pay"
+
+    - name: "📊 Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️ Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄 Check Full Refund"
+      function: "test_refund"
+
+test_openorder_cash:
+  full_test_path: 'Automation-logic/suits/test_orderflows/test_cash/test_openorder_cash.py'
+  cases:
+    - name: "📌Click On Open Order Button"
+      function: "test_openorder_btn"
+
+    - name: "🛒 Add three items"
+      function: "test_adding_items"
+
+    - name: "💲 Add Discount "
+      function: "test_add_discount"
+
+    - name: "📜 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "Add Manual Item from key Pad"
+      function: "test_manual_item_and_qty"
+
+    - name: "Update quantity of random Item"
+      function: "test_updating_item"
+
+    - name: "🧮Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "💵Pay with Cash"
+      function: "test_final_pay"
+
+    - name: "📊Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄Itemwise Refund"
+      function: "test_refund"
+
+test_openorder_card:
+  full_test_path: 'Automation-logic/suits/test_orderflows/test_card/test_openorder_card.py'
+  cases:
+    - name: "🔌 Connecting Pax"
+      function: "test_pax_connection"
+
+    - name: "📌Click On Open Order Button"
+      function: "test_openorder_btn"
+
+    - name: "🛒 Add three items"
+      function: "test_adding_items"
+
+    - name: "💲 Add Discount "
+      function: "test_add_discount"
+
+    - name: "📜 Add note to the Order"
+      function: "test_add_note"
+
+    - name: "Add Manual Item from key Pad"
+      function: "test_manual_item_and_qty"
+
+    - name: "Update quantity of random Item"
+      function: "test_updating_item"
+
+    - name: "🧮Transaction Calculation"
+      function: "test_cart_calculations"
+
+    - name: "Add Tip"
+      function: "test_tip_added"
+
+    - name: "💵Pay with Card"
+      function: "test_final_pay"
+
+    - name: "📊Calculate Transaction after Tax"
+      function: "test_transaction"
+
+    - name: "🛍️Check Order Type"
+      function: "test_orderType"
+
+    - name: "🔄Itemwise Refund"
+      function: "test_refund"
+
+test_stayorder_cash:
+  full_test_path: 'Automation-logic/suits/test_orderflows/test_cash/test_stay_cash.py'
+  cases:
+    - name: "📌 Click On Stay Order Button"
+      function: "test_stayorder_btn"
+
+    - name: "⌨️ Add Manual Item from Keypad"
+      function: "test_manual_item_and_qty"
+    
+    - name: "🆕 Adding a New Customer"
+      function: "test_adding_customers"
+
+    - name: "🛒 Add Two Items"
+      function: "test_add_multiple_item"
+
+    - name: "🔄 Update Quantity of Random Item"
+      function: "test_updating_item"
+
+    - name: "💲 Add Discount"
+      function: "test_add_discount"
+
+    - name: "📝 Add Note to the Order"
+      function: "test_add_note"
+
+    - name: "🧮 Transaction Calculation at Cart"
+      function: "test_pay_check"
+
+    - name: "📊 Calculate Card Price Hike"
+      function: "test_card_amt_hike_check"
+
+    - name: "💵 Calculate Cash Price Remaining Same"
+      function: "test_cash_amt_check"
+
+    - name: "✅ Final Payment"
+      function: "test_cash_pay"
+
+    - name: "🔄 Itemwise Refund"
+      function: "test_refund"

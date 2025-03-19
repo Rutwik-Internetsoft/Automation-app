@@ -1,0 +1,8 @@
+Already logged in!
+✅ Login completed successfully before the test flow.
+Phone Order
+Refund Initiated
+final Check
+refunded Amount  9.69
+9.69
+[<appium.webdriver.webelement.WebElement (session="c191f1b3-5127-47a3-b2c8-1f6cb943a479", element="00000000-0000-0274-ffff-ffff00001814")>, <appium.webdriver.webelement.WebElement (session="c191f1b3-5127-47a3-b2c8-1f6cb943a479", element="00000000-0000-0274-ffff-ffff00001815")>]

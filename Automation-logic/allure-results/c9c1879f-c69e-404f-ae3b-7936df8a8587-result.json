@@ -1,0 +1,1 @@
+{"name": "Add multiple items to the cart", "status": "passed", "start": 1741784796648, "stop": 1741784802302, "uuid": "4d5056c0-191b-4bf8-8290-b0c29a8fd378", "testCaseId": "3275c0a58050b95f230e8430dd84b15e", "fullName": "suits.test_orderflows.test_cash.test_takeout_cash.TestTakeoutFlow#test_adding_items"}
