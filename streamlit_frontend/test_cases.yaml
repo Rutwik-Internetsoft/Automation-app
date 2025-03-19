@@ -1,5 +1,5 @@
 test_phoneorder_cash:
-  full_test_path: "suits/test_orderflows/test_cash/test_phoneorder_cash.py"
+  full_test_path: "Automation-logic/suits/test_orderflows/test_cash/test_phoneorder_cash.py"
   cases:
 
     - name: "📌 Normal Phone Order with Cash Payment"
@@ -15,7 +15,7 @@ test_phoneorder_cash:
       function: "test_phoneorder_cancel_order"
 
 test_phoneorder_card:
-  full_test_path: "suits/test_orderflows/test_card/test_phoneorder_card.py"
+  full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_phoneorder_card.py"
   cases:
 
     - name: "🔌 Connecting Pax"
@@ -34,7 +34,7 @@ test_phoneorder_card:
       function: "test_phoneorder_cancel_order"
 
 test_takeoutorder_cash:
-  full_test_path: "suits/test_orderflows/test_cash/test_takeout_cash.py"
+  full_test_path: "Automation-logic/suits/test_orderflows/test_cash/test_takeout_cash.py"
   cases:
     - name: "📌 Click on takeout order button"
       function: "test_take_out_btn"
@@ -67,7 +67,7 @@ test_takeoutorder_cash:
       function: "test_refund"
 
 test_takeoutorder_card:
-  full_test_path: "suits/test_orderflows/test_card/test_takeout_card.py"
+  full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_takeout_card.py"
   cases:
 
     - name: "🔌 Connecting Pax"
@@ -107,7 +107,7 @@ test_takeoutorder_card:
       function: "test_refund"
 
 test_openorder_cash:
-  full_test_path: 'suits/test_orderflows/test_cash/test_openorder_cash.py'
+  full_test_path: 'Automation-logic/suits/test_orderflows/test_cash/test_openorder_cash.py'
   cases:
     - name: "📌Click On Open Order Button"
       function: "test_openorder_btn"
@@ -143,7 +143,7 @@ test_openorder_cash:
       function: "test_refund"
 
 test_openorder_card:
-  full_test_path: 'suits/test_orderflows/test_card/test_openorder_card.py'
+  full_test_path: 'Automation-logic/suits/test_orderflows/test_card/test_openorder_card.py'
   cases:
     - name: "🔌 Connecting Pax"
       function: "test_pax_connection"
@@ -185,7 +185,7 @@ test_openorder_card:
       function: "test_refund"
 
 test_stayorder_cash:
-  full_test_path: 'suits/test_orderflows/test_cash/test_stay_cash.py'
+  full_test_path: 'Automation-logic/suits/test_orderflows/test_cash/test_stay_cash.py'
   cases:
     - name: "📌 Click On Stay Order Button"
       function: "test_stayorder_btn"

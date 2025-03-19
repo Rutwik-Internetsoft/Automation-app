@@ -3,7 +3,7 @@ import subprocess
 import yaml,time,webbrowser
 
 class LogicOfApp:
-    def __init__(self, yaml_path="webapp/test_cases.yaml"):
+    def __init__(self, yaml_path="streamlit_frontend/test_cases.yaml"):
         """Initialize state and load test cases from YAML."""
         if "page" not in st.session_state:
             st.session_state.page = "home"
@@ -49,43 +49,7 @@ class LogicOfApp:
             st.session_state.page = "home"
             st.rerun()
 
-    def start_allure_server(self, port=5050):
-        """Start Allure server on a specific port and open the report in a browser, with debugging logs."""
-        try:
-            # Define the Allure server command with a specific port
-            command = ["allure", "serve", "allure-report", "-p", str(port)]
-            st.write(f"🛠 Running command: {' '.join(command)}")  # Debugging log
-
-            # Start Allure server in the background
-            server_process = subprocess.Popen(
-                command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,shell=True
-            )
-
-            time.sleep(3)  # Wait for the server to start (adjust if needed)
-            st.write("⏳ Waiting for Allure server to start...")  # Debugging log
-
-            # Read output to check if Allure started successfully
-            stdout, stderr = server_process.communicate(timeout=5)
-            st.write(f"✅ Allure stdout: {stdout}")  # Debugging log
-            if stderr:
-                st.write(f"⚠️ Allure stderr: {stderr}")  # Debugging log
-
-            # Check if process is still running
-            if server_process.poll() is None:
-                st.success(f"🚀 Allure Report should now be running at: http://127.0.0.1:{port}")
-
-                # Open Allure report in browser
-                allure_url = f"http://127.0.0.1:{port}"
-                webbrowser.open(allure_url)
-                st.write(f"🌍 Opening browser at: {allure_url}")  # Debugging log
-            else:
-                st.error("❌ Allure server failed to start.")
-
-        except subprocess.TimeoutExpired:
-            st.error("❌ Timeout: Allure server took too long to start.")
-        except Exception as e:
-            st.error(f"⚠️ Exception: {e}")
-
+   
     def test_execution(self, order_type):
         """Render test execution UI for a specific phone order type using YAML."""
 
@@ -143,12 +107,6 @@ class LogicOfApp:
                 output_box.text_area("📜 Execution Logs", output_text, height=300)
 
             process.wait()
-                    # 🔹 Start Allure server after test completion
-            if process.returncode == 0:
-                st.success("✅ Test execution completed successfully!")
-                self.start_allure_server(port=5050)
-            else:
-                st.error("❌ Test execution failed. Skipping Allure.")
 
 
         # Execute the test only if a button was clicked

@@ -17,36 +17,10 @@ ORDER_TYPES = {
     "stayorder": {"name": "Stay Order", "methods": ["cash", "card"]}
 }
 
-# List of available devices
-DEVICES = {
-    "Device 1": "192.168.0.248:5555",
-    "Device 2": "192.168.0.208:5555",
-    "Device 3": "192.168.0.78:5555",
-    "Device 4": "192.168.0.142:5555"
-}
-# Function to connect to a device using ADB
-def connect_to_device(device_name):
-    """Runs adb connect with the selected device's IP"""
-    ip_address = DEVICES[device_name]
-    os.system(f"adb connect {ip_address}")
-    st.success(f"Connected to {device_name} ({ip_address})")
 
 def main():
     st.title("Test Execution Dashboard")
     app = LogicOfApp()
-
-    # Device Selection
-    st.sidebar.subheader("🔌 Device Connection")
-    selected_device = st.selectbox("Select a Device:", list(DEVICES.keys()))
-
-    if st.sidebar.button("Connect to Device"):
-        output = connect_to_device(selected_device)
-        st.sidebar.text(output)
-
-    # Show connected devices
-    st.sidebar.subheader("📱 Connected Devices")
-    device_list = subprocess.run("adb devices", shell=True, capture_output=True, text=True)
-    st.sidebar.text(device_list.stdout)
 
     # Order Selection
     if "page" not in st.session_state:
