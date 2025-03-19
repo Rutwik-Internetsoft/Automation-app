@@ -20,7 +20,7 @@ if project_root not in sys.path:
 class AppiumDriver:
     def __init__(self):
         self.driver = None
-        self.url = "http://192.168.56.1:4723"
+        self.url = "http://127.0.0.1:4723/"
         self.caps: Dict[str, Any] = {
             "platformName": "Android",
             "appium:deviceName": "TS43223941452",
