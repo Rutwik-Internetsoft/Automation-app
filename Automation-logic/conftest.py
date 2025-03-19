@@ -20,7 +20,11 @@ if project_root not in sys.path:
 class AppiumDriver:
     def __init__(self):
         self.driver = None
+<<<<<<< HEAD
         self.url = "http://192.168.56.1:4723"
+=======
+        self.url = "http://192.168.56.1:4723"        
+>>>>>>> d99b4e0 (Fixed API route, improved subprocess handling, and validated test execution)
         self.caps: Dict[str, Any] = {
             "platformName": "Android",
             "appium:deviceName": "TS43223941452",
@@ -48,6 +52,7 @@ class AppiumDriver:
         if self.driver:
             self.driver.quit()
             self.driver = None
+
 
 # ========================= Appium Driver Instance =========================
 

@@ -100,7 +100,6 @@ elif st.session_state.page == "test_execution":
     
     full_suit_runner = f"test_{order_type}_{payment_method}"
     
-    st.subheader(f"🛠 {full_suit_runner.replace("_"," ")} - Test Execution")
 
     # Run Full Test Suite
     if st.button("▶ Run Full Test Suite"):
@@ -109,6 +108,21 @@ elif st.session_state.page == "test_execution":
             st.session_state.logs = response.json()["logs"]
         else:
             st.session_state.logs = "❌ Failed to execute full test suite!"
+    
+
+    response = requests.get(f"{API_BASE_URL}/individual_test_case/{full_suit_runner}")
+    if response.status_code == 200:
+        data = response.json()
+        for case in data:
+            case_name = case["name"]
+            case_function = case["function"]
+
+            if st.button(case_name, key=case_function):
+                response = requests.get(f"{API_BASE_URL}/run-test/{full_suit_runner}/{case_function}")
+                if response.status_code == 200:
+                    st.session_state.logs = response.json()["logs"]
+                else:
+                    st.session_state.logs = f"❌ Failed to execute {case_function} Retry!"
     
 
     if st.button("🔙 Back"):
@@ -160,7 +174,7 @@ elif st.session_state.page == "Allure Report":
     st.subheader("📜 Allure Report")
 
     # Start Allure Button
-    if st.button("▶ Start Allure Report", use_container_width=True):
+    if st.button("▶ Start Allure Report"):
         response = requests.get(f"{API_BASE_URL}/start-allure")
         if response.status_code == 200:
             st.success("✅ Allure server started!")
@@ -168,22 +182,23 @@ elif st.session_state.page == "Allure Report":
             st.error("❌ Could not start Allure server.")
 
     # Stop Allure Button
-    if st.button("⛔ Stop Allure Report", use_container_width=True):
+    if st.button("⛔ Stop Allure Report"):
         response = requests.get(f"{API_BASE_URL}/stop-allure")
         if response.status_code == 200:
             st.success(response.json()["message"])
         else:
             st.error("❌ Could not stop Allure server.")
 
+    if st.button("📊 Get Allure Report"):
     # Embed Allure report if available
-    response = requests.get(f"{API_BASE_URL}/get-allure-url")
-    if response.status_code == 200:
-        allure_url = response.json().get("url", "")
-        if allure_url:
-            st.markdown(
-        f"""<div style="display: flex; justify-content: center;"><iframe src="{allure_url}" width="100%" height="600px"></iframe></div>""",unsafe_allow_html=True)       
-            time.sleep(5)
-        else:
-            st.error("❌ Failed to load Allure report URL.")
+        response = requests.get(f"{API_BASE_URL}/get-allure-url")
+        if response.status_code == 200:
+            allure_url = response.json().get("url", "")
+            if allure_url:
+                st.markdown(
+            f"""<div style="display: flex; justify-content: center;"><iframe src="{allure_url}" width="100%" height="600px"></iframe></div>""",unsafe_allow_html=True)       
+                time.sleep(5)
+            else:
+                st.error("❌ Failed to load Allure report URL.")
     else:
-        st.error("❌ Could not retrieve Allure report URL.")
+        st.toast("❌ Start Allure report Server by Clicking Start Allue Report.")

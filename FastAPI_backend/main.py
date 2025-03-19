@@ -56,9 +56,8 @@ ORDER_TYPES = {
     "stayorder": {"name": "Stay Order", "methods": ["cash", "card"]}
 }
 
-@app.get("/test_cases_individual")
 def load_test_cases():
-    yaml_file_path = "streamlit_frontend/test_cases.yaml"  # Update with actual path
+    yaml_file_path = "FastAPI_backend/test_cases.yaml"  # Update with actual path
     if not os.path.exists(yaml_file_path):
         raise FileNotFoundError("YAML configuration file not found!")
 
@@ -69,10 +68,12 @@ test_cases = load_test_cases()
 
 @app.get("/individual_test_case/{test_script}")
 def individual_test_cases(test_script: str):
-    test_cases = test_cases.get(test_script)
-    for cases in test_cases.get("cases",[]):
-        case_name = cases["name"]
-        case_function = cases["function"]
+    if test_script not in test_cases:
+        raise HTTPException(status_code=404, detail="Invalid order type!")
+    test_case = test_cases[test_script].get("cases")
+    if not test_case:
+        raise HTTPException(status_code=400, detail="Test path missing in YAML!")
+    return test_case
 
 @app.get("/order-selection/{order_type}")
 def get_order_selection(order_type: str):
@@ -82,7 +83,6 @@ def get_order_selection(order_type: str):
 
     order_data = ORDER_TYPES[order_type]
     return {"order_name": order_data["name"], "payment_methods": order_data["methods"]}
-
 
 @app.get("/run-test/{test}")
 def run_full_test(test: str):
@@ -96,7 +96,16 @@ def run_full_test(test: str):
 
     return execute_test(["pytest", test_path, "-s"])
 
+@app.get("/run-test/{full_suit_runner}/{case_function}")
+def run_functional_test(full_suit_runner: str, case_function: str):
+    if full_suit_runner not in test_cases:
+        raise HTTPException(status_code=404, detail="Invalid order type!")
 
+    test_path = test_cases[full_suit_runner].get("full_test_path")
+
+    if not test_path:
+        raise HTTPException(status_code=400, detail="Test path missing in YAML!")
+    return execute_test(["pytest", test_path,"-k",case_function,"-s"])
 
 def execute_test(command):
     """Run a test command and return real-time logs."""
