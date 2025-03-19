@@ -1,6 +1,6 @@
 name: Run Takeout Cash Test
 
-on: 
+on:
   workflow_dispatch  # Allows manual trigger from GitHub UI
 
 jobs:
@@ -15,16 +15,34 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+          cache: 'pip'
 
-      - name: Install Dependencies
-        run: pip install -r Automation-logic/requirements.txt
-
-      - name: Install Appium & Node.js
+      - name: Install Dependencies (Cached)
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-          sudo apt install -y nodejs
-          npm install -g appium
+          pip install --upgrade pip
+          pip install -r Automation-logic/requirements.txt
+
+      - name: Install Node.js & Appium (Cached)
+        run: |
+          if ! command -v appium &> /dev/null; then
+            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            sudo apt install -y nodejs
+            npm install -g appium
+          fi
           appium -v  # Verify installation
+
+      - name: Setup Android Device (ADB)
+        run: |
+          sudo apt update && sudo apt install -y android-tools-adb
+          adb start-server
+          adb devices -l  # List connected devices
+          sleep 3  # Ensure device is recognized
+
+      - name: Start Appium Server
+        run: |
+          nohup appium server --address 0.0.0.0 --port 4723 > appium.log 2>&1 &
+          sleep 5  # Wait for server to start
+          curl http://127.0.0.1:4723/status/  # Verify Appium is running
 
       - name: Run Takeout Cash Test
         run: pytest Automation-logic/suits/test_orderflows/test_cash/test_takeout_cash.py --capture=no
