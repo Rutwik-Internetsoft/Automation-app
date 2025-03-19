@@ -34,7 +34,7 @@ test_phoneorder_card:
       function: "test_phoneorder_cancel_order"
 
 test_takeoutorder_cash:
-  full_test_path: "Automation-logic/suits/test_orderflows/test_cash/test_takeout_cash.py"
+  full_test_path: "Automation-logic/suits/test_orderflows/test_cash/test_takeoutorder_cash.py"
   cases:
     - name: "📌 Click on takeout order button"
       function: "test_take_out_btn"
@@ -67,7 +67,7 @@ test_takeoutorder_cash:
       function: "test_refund"
 
 test_takeoutorder_card:
-  full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_takeout_card.py"
+  full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_takeoutorder_card.py"
   cases:
 
     - name: "🔌 Connecting Pax"
