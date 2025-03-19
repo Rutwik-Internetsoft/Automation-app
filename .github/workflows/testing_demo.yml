@@ -17,7 +17,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r Automation-logic/requirements.txt
 
       - name: Install Appium & Node.js
         run: |
