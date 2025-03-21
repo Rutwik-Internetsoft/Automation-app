@@ -3,7 +3,28 @@ import subprocess
 import platform
 import yaml
 import os
+from urllib.parse import unquote
+from fastapi.responses import StreamingResponse
+
+
 app = FastAPI()
+
+def execute_test(command):
+    """Run a test command and return real-time logs."""
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8")
+
+    def stream_logs():
+        for line in iter(process.stdout.readline, ''):
+            yield line  # Stream each line as it's generated
+
+        stderr_output = process.stderr.read()
+        if stderr_output:
+            yield f"\n❌ ERROR:\n{stderr_output}"
+
+        process.wait()
+
+    return StreamingResponse(stream_logs(), media_type="text/event-stream")
+
 
 @app.get("/start-allure")
 def start_allure():
@@ -107,18 +128,10 @@ def run_functional_test(full_suit_runner: str, case_function: str):
         raise HTTPException(status_code=400, detail="Test path missing in YAML!")
     return execute_test(["pytest", test_path,"-k",case_function,"-s"])
 
-def execute_test(command):
-    """Run a test command and return real-time logs."""
-    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+@app.get("/run-test/{suit:path}")  # Allows slashes in the path
+def run_suit(suit: str):
+    decoded_suit = unquote(suit)  # Decode URL encoding (if any)
+    print(f"Executing test suit: {decoded_suit}")  # Debugging
+    return execute_test(["pytest", decoded_suit, "-s"])
 
-    output_text = ""
-    for line in iter(process.stdout.readline, ''):
-        output_text += line
 
-    stderr_output = process.stderr.read()
-    if stderr_output:
-        output_text += f"\n ERROR:\n{stderr_output}"
-
-    process.wait()
-    
-    return {"status": "completed", "logs": output_text}

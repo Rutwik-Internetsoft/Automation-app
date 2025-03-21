@@ -1,1 +1,0 @@
-{"name": "Adding New Customers", "status": "passed", "description": "Tests if new customers can be added to the POS system.", "start": 1741874840426, "stop": 1741874842091, "uuid": "91974bed-a9f7-4f81-a8cb-d9412efd967a", "testCaseId": "deaff1f0368c4168dca53c3f8b52727a", "fullName": "suits.test_orderflows.test_card.test_stay_cash.TestStayCash#test_adding_customers"}

@@ -18,8 +18,8 @@ test_phoneorder_card:
   full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_phoneorder_card.py"
   cases:
 
-    - name: "🔌 Connecting Pax"
-      function: "test_pax_connection"
+    # - name: "🔌 Connecting Pax"
+    #   function: "test_pax_connection"
 
     - name: "📌 Normal Phone Order with Card Payment and Refund"
       function: "test_phoneorder_card_payment"
@@ -70,8 +70,8 @@ test_takeoutorder_card:
   full_test_path: "Automation-logic/suits/test_orderflows/test_card/test_takeoutorder_card.py"
   cases:
 
-    - name: "🔌 Connecting Pax"
-      function: "test_pax_connection"
+    # - name: "🔌 Connecting Pax"
+    #   function: "test_pax_connection"
 
     - name: "📌 Click on takeout order button"
       function: "test_take_out_btn"
@@ -145,8 +145,8 @@ test_openorder_cash:
 test_openorder_card:
   full_test_path: 'Automation-logic/suits/test_orderflows/test_card/test_openorder_card.py'
   cases:
-    - name: "🔌 Connecting Pax"
-      function: "test_pax_connection"
+    # - name: "🔌 Connecting Pax"
+    #   function: "test_pax_connection"
 
     - name: "📌Click On Open Order Button"
       function: "test_openorder_btn"

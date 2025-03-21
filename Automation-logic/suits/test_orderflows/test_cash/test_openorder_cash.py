@@ -7,9 +7,8 @@ from logic.dependencies import Dependencies
 total = None
 tolerance = None
 
-@allure.feature("Open Order Flow - Cash Payment")
-@allure.label("Module", "Order Management")
-@allure.label("Type", "Functional Test")
+@allure.epic("Orderflow")
+@allure.feature("Open order in Cash")
 class TestOpenOrderCash:
     
     @pytest.fixture(autouse=True)

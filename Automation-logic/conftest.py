@@ -5,6 +5,7 @@ import allure
 from typing import Dict, Any
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
+import subprocess
 
 from appium.webdriver.common.appiumby import AppiumBy
 import time
@@ -20,11 +21,7 @@ if project_root not in sys.path:
 class AppiumDriver:
     def __init__(self):
         self.driver = None
-<<<<<<< HEAD
         self.url = "http://192.168.56.1:4723"
-=======
-        self.url = "http://192.168.56.1:4723"        
->>>>>>> d99b4e0 (Fixed API route, improved subprocess handling, and validated test execution)
         self.caps: Dict[str, Any] = {
             "platformName": "Android",
             "appium:deviceName": "TS43223941452",
@@ -91,6 +88,7 @@ def login_once(appium_driver):
             assert testLogin.login() is True, "Login failed."
         
         with allure.step("Entering Passcode"):
+            time.sleep(2)
             assert testLogin.passcode() is True, "Passcode entry failed."
 
         allure.attach("✅ Login completed successfully before the test flow.", name="Login Info", attachment_type=allure.attachment_type.TEXT)
@@ -117,3 +115,31 @@ def pytest_configure(config):
     allure_results_dir = "Automation-logic/allure-results"
     os.makedirs(allure_results_dir, exist_ok=True)  # Ensure the directory exists
     config.option.allure_report_dir = allure_results_dir
+
+
+
+@pytest.fixture(scope="function", autouse=True)
+def capture_android_crash_logs(request):
+    """Captures Android crash logs after each test and attaches to Allure if a crash is detected."""
+
+    device_id = "emulator-5554"  # Update based on your connected device/emulator
+
+    def get_crash_logs():
+        """Extract logs related to crashes from Android logcat."""
+        try:
+            logcat_output = subprocess.run(
+                ["adb", "-s", device_id, "logcat", "-d"],
+                capture_output=True, text=True
+            )
+            logs = logcat_output.stdout
+            return logs if logs else "No logs captured."
+        except Exception as e:
+            return f"Error while fetching logs: {str(e)}"
+
+    yield  # Run the test first
+
+    # After test execution, check for crashes
+    logs = get_crash_logs()
+
+    if logs and ("FATAL EXCEPTION" in logs or "ANR in" in logs):  # Ensure logs is not None
+        allure.attach(logs, name="Android Crash Logs", attachment_type=allure.attachment_type.TEXT)

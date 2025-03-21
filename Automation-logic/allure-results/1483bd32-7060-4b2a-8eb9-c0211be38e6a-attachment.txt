@@ -1,6 +1,0 @@
-Phone Order
-Adding Discount
-('xpath', '//android.widget.ImageView[@content-desc="Menu"]')
-2.25
-2.25
-2.25

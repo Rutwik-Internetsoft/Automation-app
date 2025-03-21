@@ -1,5 +1,0 @@
-Refund Initiated
-final Check
-[<appium.webdriver.webelement.WebElement (session="da2dd10e-813f-4ba3-ad5c-304413f7d708", element="00000000-0000-03c9-ffff-ffff00000a04")>, <appium.webdriver.webelement.WebElement (session="da2dd10e-813f-4ba3-ad5c-304413f7d708", element="00000000-0000-03c9-ffff-ffff00000a05")>]
-83.59
-83.59

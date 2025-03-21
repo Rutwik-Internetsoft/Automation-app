@@ -1,3 +1,0 @@
-Already logged in!
-✅ Login completed successfully before the test flow.
-Take out button clicked

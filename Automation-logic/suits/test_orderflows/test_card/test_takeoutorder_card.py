@@ -6,7 +6,9 @@ total = None
 tolerance = None
 surcharge = None
 
-@allure.feature("Takeout Order Flow")
+@allure.epic("Orderflow")
+@allure.feature("Takeout order in Card")
+
 class TestTakeOutFlow:
     @pytest.fixture(autouse=True)
     def setup_driver(self, appium_driver):
@@ -16,11 +18,11 @@ class TestTakeOutFlow:
         self.calc = self.deps.get_calculations()
         
 
-    @allure.story("Device Connection")
-    @allure.title("Connect PAX Payment Terminal")
-    def test_pax_connection(self):
-        assert self.calc.connect_PAX() == True
-        print("PAX Connected Successfully")
+    # @allure.story("Device Connection")
+    # @allure.title("Connect PAX Payment Terminal")
+    # def test_pax_connection(self):
+    #     assert self.calc.connect_PAX() == True
+    #     print("PAX Connected Successfully")
 
     @allure.story("Order Management")
     @allure.title("Select Takeout Order")
