@@ -76,7 +76,7 @@ class Calculations:
         try:
             
             tax = float(self.wait.until(EC.presence_of_element_located((self.locators.tax))).text.strip().replace("$",""))
-            
+            print(f"Tax applied is {tax}")
             return tax
         except Exception as e:
             print(f"Error in tax_calculation: {e}")
@@ -85,6 +85,7 @@ class Calculations:
     def service_charge(self):
         try:
             self.serviceCharge = float(self.wait.until(EC.element_to_be_clickable(self.locators.service_charge)).text.strip().replace("$", ""))
+            print(f"Service charge is {self.serviceCharge}")
             return self.serviceCharge
         except Exception as e:
             print(f"Error in service_charge: {e}")
@@ -254,11 +255,11 @@ class Calculations:
             if cash_log == "cash_log":
                 self.long_wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
                 return True
-            time.sleep(3)
+            time.sleep(1)
             
             transaction_total = float(self.long_wait.until(EC.presence_of_element_located(self.locators.transaction_total_amt)).text.strip().replace("$",""))
             
-            return abs(transaction_total )
+            return abs(transaction_total)
             
         except:
             return False
@@ -323,7 +324,7 @@ class Calculations:
     def cash_refund(self,cash_log = None):
         try:
             try:
-                self.long_wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
+                self.wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
             except:
                 pass
 
@@ -348,7 +349,6 @@ class Calculations:
                 return f"Error {e}"
                                             
             try:
-                print("final Check")
                 refunded_value_parent = self.wait.until(EC.presence_of_element_located(self.locators.ref_parent))
 
                 text_views = refunded_value_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")                
@@ -361,13 +361,13 @@ class Calculations:
                 text_view = total_value_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")
                 
                 paid_amount = float(text_view[1].text.strip().replace("$",""))
-                print(paid_amount)
+                print(f"The Paid amount is {paid_amount} $")
                 
                 tip_parent = self.wait.until(EC.presence_of_element_located(self.locators.tip_parent))
                 
                 text_tip = tip_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")                
+                
                 tip_prize = float(text_tip[1].text.strip().replace("$",""))
-                print(text_tip)
                 
                 if (paid_amount-refund_amount-tip_prize)<=0.3:
                     self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
@@ -385,7 +385,7 @@ class Calculations:
     def card_refund(self):
         try:
             try:
-                self.long_wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
+                self.wait.until(EC.presence_of_element_located(self.locators.transaction_button)).click()
             except:
                 pass
             self.wait.until(EC.presence_of_element_located(self.locators.order_1)).click()
@@ -396,13 +396,13 @@ class Calculations:
         
                 
             try:
-                self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            
+                self.long_wait.until(EC.presence_of_element_located(self.locators.save)).click()
                 self.wait.until(EC.presence_of_element_located(self.locators.save_refund)).click()
             except:
                 return "Could'nt save the refund"
             
             try:
-                print("final Check")
                 refunded_value_parent = self.wait.until(EC.presence_of_element_located(self.locators.ref_parent))
                                 
                 text_views = refunded_value_parent.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")
@@ -430,18 +430,19 @@ class Calculations:
             return Exception
 
     def isOrder(self,order_type = None):
+        
         try:
-            
-            try:
-                order_text = self.short_wait.until(EC.presence_of_element_located(self.locators.transaction_order_type)).text
-            except:
-                pass
-            try:
-                order_text = self.short_wait.until(EC.presence_of_element_located(self.locators.current_order_type)).text.strip().replace("Current Order: ","")
-            except:
-                pass    
-            print(order_text)
-            
+            order_text = self.short_wait.until(EC.presence_of_element_located(self.locators.transaction_order_type)).text
+        except:
+            pass
+        try:
+            order_text = self.short_wait.until(EC.presence_of_element_located(self.locators.current_order_type)).text.strip().replace("Current Order: ","")
+        except:
+            pass    
+        
+        print("The Order Type should be ", order_text)
+        
+        try:
             if order_text == order_type:
                 return True
             elif order_type is None:
@@ -696,7 +697,6 @@ class Calculations:
                 pass
             time.sleep(4)
             num_cust = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCustomerList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
-            print(num_cust)
             if num_cust == 0:
                 self.adding_new_customer()
                 return True
@@ -783,7 +783,9 @@ class Calculations:
                 return tvAmt
             elif process == "Update":
                 self.wait.until(EC.presence_of_element_located(self.locators.update_order)).click()
-                self.add_multiple_items(2)                
+                self.add_multiple_items(2)  
+                self.add_note("add_note")    
+                self.add_discount()     
                 return True
             elif process == "Cancel":
                 try:
@@ -821,3 +823,16 @@ class Calculations:
                     return f"Date Doesn't Match"
         except Exception as e:
             return f"Error is {e}"
+        
+    def remove_item(self):
+        try:
+            Cart_qty = len(self.wait.until(EC.presence_of_all_elements_located(self.locators.cart_qty)))
+            itm = random.randint(1,Cart_qty)
+            path = f'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCartList"]/androidx.appcompat.widget.LinearLayoutCompat[{itm}]/android.widget.LinearLayout'
+            
+            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,path))).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.remove_itm)).click()            
+            return True
+        except Exception as e:
+            return f"Error is {e}"
+            

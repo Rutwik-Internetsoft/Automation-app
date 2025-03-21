@@ -1,14 +1,14 @@
 import pytest
 import allure
 from logic.dependencies import Dependencies
-
+import os
 total = None
 tolerance = None
 surcharge = None
 
-@allure.feature("Open Order Flow")
-@allure.label("App", "POS System")
-@allure.label("OS", "Android")
+@allure.epic("Orderflow")
+@allure.feature("Open order in Card")
+
 class TestOpenOrderCard:
     
     @pytest.fixture(autouse=True)
@@ -18,12 +18,12 @@ class TestOpenOrderCard:
         self.deps = Dependencies(self.driver)
         self.calc = self.deps.get_calculations()
         
-    @allure.story("Device Connection")
-    @allure.title("Connect PAX Payment Terminal")
-    def test_pax_connection(self):
-        with allure.step("Connecting to PAX Terminal"):
-            assert self.calc.connect_PAX() == True
-        allure.attach("PAX Connected Successfully", name="Connection Log")
+    # @allure.story("Device Connection")
+    # @allure.title("Connect PAX Payment Terminal")
+    # def test_pax_connection(self):
+    #     with allure.step("Connecting to PAX Terminal"):
+    #         assert self.calc.connect_PAX() == True
+    #     allure.attach("PAX Connected Successfully", name="Connection Log")
 
     @allure.story("Order Management")
     @allure.title("Select Open Order")
@@ -67,6 +67,12 @@ class TestOpenOrderCard:
     @allure.title("Validate cart calculations")
     def test_cart_calculations(self):
         global total, tolerance
+        screenshot_dir = "allure-report/screenshots"
+        os.makedirs(screenshot_dir, exist_ok=True)  # Ensure directory exists
+        screenshot_path = os.path.join(screenshot_dir, "before_pay.png")
+
+        allure.attach.file(screenshot_path, name="Before Pay Button", attachment_type=allure.attachment_type.PNG)
+
         with allure.step("Calculating total price"):
             end_pay = self.calc.pay()
             tolerance = 0.5

@@ -2,7 +2,7 @@ from logic.locators import Locators
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import time
 
 class Login:
     def __init__(self, appium_driver):
@@ -45,6 +45,7 @@ class Login:
             pass
         
         try:
+            time.sleep(2)
             self.wait.until(EC.presence_of_element_located(self.locators.passcode_field)).send_keys('1111')
             self.wait.until(EC.presence_of_element_located(self.locators.action_bar_root))
             self.wait.until(EC.presence_of_element_located(self.locators.main_page_indicator))

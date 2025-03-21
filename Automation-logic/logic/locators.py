@@ -111,6 +111,8 @@ class Locators(LocatorLoader):
 
     def common_locators(self):
         """Store and retrieve all common locators."""
+        self.setup_btn = self.locator_loader.get_locator("setup_btn","common")
+        self.remove_itm = self.locator_loader.get_locator("remove_itm","common")
         self.first_name_field = self.get_locator("first_name_field", "common")
         self.surname_field = self.locator_loader.get_locator("surname_field", "common")
         self.phone_field = self.locator_loader.get_locator("phone_field", "common")
@@ -243,3 +245,6 @@ class Locators(LocatorLoader):
         self.cash_in_amt = self.locator_loader.get_locator("cash_in_amt","cash_log")
         self.cash_out_amt = self.locator_loader.get_locator("cash_out_amt","cash_log")
         self.change_amount = self.locator_loader.get_locator("change_amount","cash_log")
+
+    def set_up(self):
+        self.tips_btn = self.locator_loader.get_locator("tips_btn","setup")

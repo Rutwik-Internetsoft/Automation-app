@@ -1,11 +1,11 @@
-name: Run Takeout Cash Test
+name: Run Takeout Cash Test (Windows)
 
-on: 
+on:
   workflow_dispatch  # Allows manual trigger from GitHub UI
 
 jobs:
   run-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use Windows runner
 
     steps:
       - name: Checkout Repository
@@ -19,12 +19,18 @@ jobs:
       - name: Install Dependencies
         run: pip install -r Automation-logic/requirements.txt
 
-      - name: Install Appium & Node.js
+      - name: Install Node.js & Appium
         run: |
-          curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-          sudo apt install -y nodejs
           npm install -g appium
           appium -v  # Verify installation
+
+      - name: Verify Running Emulator
+        run: adb devices  # Check if the emulator is detected
+
+      - name: Start Appium Server
+        run: |
+          Start-Process -NoNewWindow -FilePath "appium" -ArgumentList "--address 127.0.0.1 --port 4723"
+          Start-Sleep -s 10  # Wait for Appium to start
 
       - name: Run Takeout Cash Test
         run: pytest Automation-logic/suits/test_orderflows/test_cash/test_takeout_cash.py --capture=no

@@ -2,7 +2,8 @@ from logic.dependencies import Dependencies
 import allure
 import pytest
 
-@allure.feature("Sanity Sheet")
+@allure.epic("Orderflow")
+@allure.feature("Phone order in Cash")
 class TestPhoneOrderCash:
     @pytest.fixture(autouse=True)
     def setup_driver(self, appium_driver):
@@ -32,11 +33,8 @@ class TestPhoneOrderCash:
         assert self.phone.add_multiple_items(3)
         assert self.phone.add_discount()
         self.trn_pay = self.phone.pay(amount = "yes")
-        print(self.trn_pay)
-        self.pend_pay =  self.phone.save_order("Pay")
-        print(self.pend_pay)
+        self.pend_pay = self.phone.save_order("Pay")
         self.endpay = self.phone.cash_amount()
-        print(self.endpay)
         assert self.endpay == self.pend_pay == self.trn_pay
         assert self.phone.cash_pay()==True
 
@@ -49,11 +47,8 @@ class TestPhoneOrderCash:
         assert self.phone.add_multiple_items(3)
         assert self.phone.save_order(process = "Update") == True
         self.trn_pay = self.phone.pay(amount = "yes")
-        print(self.trn_pay)
-        self.pend_pay =  self.phone.save_order("Pay")
-        print(self.pend_pay)
+        self.pend_pay = self.phone.save_order("Pay")
         self.endpay = self.phone.cash_amount()
-        print(self.endpay)
         assert self.endpay == self.pend_pay == self.trn_pay
         assert self.phone.cash_pay()==True
 

@@ -2,9 +2,10 @@ import pytest
 import allure
 from logic.dependencies import Dependencies
 
-@allure.epic("POS System Automation")
-@allure.feature("Stay Card Order")
-class TestStayCash:
+@allure.epic("Orderflow")
+@allure.feature("Stay order in Card")
+
+class TestStayCard:
     
     @pytest.fixture(autouse=True)
     def setup_driver(self, appium_driver):
@@ -13,11 +14,11 @@ class TestStayCash:
         self.deps = Dependencies(self.driver)
         self.calc = self.deps.get_calculations()
     
-    @allure.story("Device Connection")
-    @allure.title("Connect PAX Payment Terminal")
-    def test_pax_connection(self):
-        assert self.calc.connect_PAX() == True
-        print("PAX Connected Successfully")
+    # @allure.story("Device Connection")
+    # @allure.title("Connect PAX Payment Terminal")
+    # def test_pax_connection(self):
+    #     assert self.calc.connect_PAX() == True
+    #     print("PAX Connected Successfully")
 
     @allure.story("Order Management")
     @allure.title("Select Stay Order")

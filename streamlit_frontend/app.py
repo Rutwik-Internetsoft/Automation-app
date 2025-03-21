@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 import time
+import urllib.parse
+
 API_BASE_URL = "http://127.0.0.1:8000/" 
 # Custom Styles
 def apply_custom_styles():
@@ -58,8 +60,21 @@ st.title(st.session_state.page)
 # 👉 Run Sanity Tests Page
 if st.session_state.page == "Run Sanity":
     
-    st.subheader("Execute Sanity Test Suite")
 
+    suit = "Automation-logic/suits/test_orderflows/test_cash"
+    encoded_suit = urllib.parse.quote(suit, safe="")
+
+
+    if st.button("Run Cash Suit"):
+        with st.empty():  # Placeholder for logs
+            response = requests.get(f"{API_BASE_URL}/run-test/{encoded_suit}")
+
+            logs = ""
+            for chunk in response.iter_content(chunk_size=1024):
+                logs += chunk.decode()
+                st.text_area("📜 Execution Logs", logs, height=300)
+        
+    
     # Step 1: Select Order Type
     if not st.session_state.selected_order:
         st.subheader("Orders")
