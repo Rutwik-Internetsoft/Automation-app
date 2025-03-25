@@ -115,8 +115,8 @@ common:
    locator: '//androidx.appcompat.widget.LinearLayoutCompat[@resource-id="com.pays.pos:id/linearHardware"]'
   
   pay_button:
-    by: xpath
-    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/tvPayNow"]'
+    by: id
+    locator: 'com.pays.pos:id/tvPayNow'
 
   txtpay_button:
     by: xpath
@@ -575,6 +575,8 @@ cash_log:
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtChangeAmount"]'
 
 setup:
+
+
   tips_btn:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Tips"]'
@@ -591,4 +593,50 @@ setup:
    by: xpath
    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edt_tip"]'
 
-   
+  taxes_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Taxes"]'
+
+  taxes_add_new:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtNewTax"]'
+
+  tax_name:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/etName"]'
+
+  tax_added_successfully:
+    by: xpath
+    locator: '//android.widget.TextView[@text="SBT"]'
+
+  discount_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Discounts"]'
+
+  discount_add_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCreateDiscount"]'
+
+  discount_name_btn:
+    by: xpath
+    locator: '//android.widget.EditText[@text="Discount Name*"]'
+
+  discount_atm:
+    by: xpath
+    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edt_discount"]'
+  
+  order_note_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Order Notes"]'
+
+  order_note_add_btn:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtCreateNote"]'
+
+  order_note_title:
+    by: xpath
+    locator: '//android.widget.EditText[@text="Note Title*"]'
+
+  delete_order:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/title" and @text="Delete Order"]'

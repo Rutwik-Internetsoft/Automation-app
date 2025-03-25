@@ -4,6 +4,7 @@ from logic.locators import Locators
 from logic.dining_logic import Dining
 from logic.split_logic import Split_cash
 from logic.cash_log_logic import Cash_log
+from logic.setup_logic import Setup
 class Dependencies:
 
     def __init__(self, driver):
@@ -16,6 +17,7 @@ class Dependencies:
         self._split  = None
         self._loyality = None
         self._cashlog = None
+        self._setup = None
     
     def get_login(self):
         if self._login is None:
@@ -48,4 +50,8 @@ class Dependencies:
         if self._cashlog is None:
             self._cashlog = Cash_log(self.driver)
         return self._cashlog
+    def get_setup(self):
+        if self._setup is None:
+            self._setup = Setup(self.driver)
+        return self._setup
 

@@ -1,0 +1,2 @@
+The Order Type should be  Phone Order
+Adding Discount

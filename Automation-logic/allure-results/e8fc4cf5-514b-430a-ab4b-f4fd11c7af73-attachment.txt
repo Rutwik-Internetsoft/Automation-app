@@ -1,0 +1,4 @@
+Sub total is 74.81
+Tax applied is 26.17
+Service charge is 7.48
+✅ Total price calculation passed.

@@ -238,13 +238,27 @@ class Locators(LocatorLoader):
         self.merged_tables_selection = self.locator_loader.get_locator("merged_tables_selection","dining")
         
     def cash_log(self):
-        random_number = random.randint(0, 3)
-
         self.cash_log_button = self.locator_loader.get_locator("cash_log_button","cash_log")
         self.cash_drawer_amt = self.locator_loader.get_locator("cash_drawer_amt","cash_log")
         self.cash_in_amt = self.locator_loader.get_locator("cash_in_amt","cash_log")
         self.cash_out_amt = self.locator_loader.get_locator("cash_out_amt","cash_log")
-        self.change_amount = self.locator_loader.get_locator("change_amount","cash_log")
+        self.change_amount = self.locator_loader.get_locator("change_amount","cash_log")  
 
     def set_up(self):
-        self.tips_btn = self.locator_loader.get_locator("tips_btn","setup")
+        self.tips_btn = self.locator_loader.get_locator("tips_btn","setup") 
+        self.tips_add_new = self.locator_loader.get_locator("tips_add_new","setup")
+        self.tip_name = self.locator_loader.get_locator("tip_name","setup")
+        self.tip_amt = self.locator_loader.get_locator("tip_amt","setup")
+        self.taxes_btn = self.locator_loader.get_locator("taxes_btn","setup")
+        self.taxes_add_new = self.locator_loader.get_locator("taxes_add_new","setup")
+        self.tax_name = self.locator_loader.get_locator("tax_name","setup")
+        self.tax_added_successfully = self.locator_loader.get_locator("tax_added_successfully","setup")
+        self.discount_btn = self.locator_loader.get_locator("discount_btn","setup")
+        self.discount_add_btn = self.locator_loader.get_locator("discount_add_btn","setup")
+        self.discount_name_btn = self.locator_loader.get_locator("discount_name_btn","setup")
+        self.discount_atm = self.locator_loader.get_locator("discount_atm","setup") 
+        self.order_note_btn = self.locator_loader.get_locator("order_note_btn","setup")
+        self.order_note_add_btn = self.locator_loader.get_locator("order_note_add_btn", "setup")
+        self.order_note_title = self.locator_loader.get_locator("order_note_title","setup")
+        self.delete_order = self.locator_loader.get_locator("delete_order","setup")
+        

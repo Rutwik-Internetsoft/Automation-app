@@ -1,0 +1,2 @@
+===================Checking is order is Take Out=======================
+The Order Type should be  TAKE OUT

@@ -89,7 +89,7 @@ class TestOpenOrderCash:
         tolerance = 0.3
 
         with allure.step("Capturing screenshot before checking price calculation"):
-            screenshot_dir = "allure-report/screenshots"
+            screenshot_dir = "Automation-logic/allure-report/screenshots"
             os.makedirs(screenshot_dir, exist_ok=True)  # Ensure directory exists
             screenshot_path = os.path.join(screenshot_dir, "before_pay.png")
             self.driver.get_screenshot_as_file(screenshot_path)

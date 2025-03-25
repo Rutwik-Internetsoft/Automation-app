@@ -1,0 +1,9 @@
+=================Performing Cart Calculations=====================
+
+Sub total is 130.4
+Tax applied is 45.64
+Service charge is 13.04
+Amount on Pay button is189.08
+
+==================
+ Card Calculation Test passed.=======================

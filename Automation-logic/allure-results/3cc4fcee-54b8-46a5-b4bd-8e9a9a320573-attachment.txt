@@ -1,0 +1,3 @@
+Sub total is 62.39
+Tax applied is 17.48
+Service charge is 6.24

@@ -239,7 +239,7 @@ class Calculations:
             elif note_type == "add_note" or note_type is None:
                 self.wait.until(EC.presence_of_element_located(self.locators.add_note)).click()
                 
-            random_note = random.randint(1,4)
+            random_note = random.randint(1,3)
             p = f'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvNotes"]/androidx.appcompat.widget.LinearLayoutCompat[{random_note}]/androidx.appcompat.widget.LinearLayoutCompat'
             self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,p))).click()
             self.wait.until(EC.presence_of_element_located(self.locators.txtsave)).click()

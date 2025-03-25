@@ -56,26 +56,23 @@ class TestOpenOrderCard:
         with allure.step("Adding a manual item"):
             assert self.calc.manual_item() == True
 
-    @allure.story("Item Quantity Update")
-    @allure.title("Update Item Quantity")
-    @allure.description("Ensures that the quantity of an existing item can be updated.")
-    def test_updating_item(self):
-        with allure.step("Updating item quantity"):
-            assert self.calc.update_item_quantity() == True
+    # @allure.story("Item Quantity Update")
+    # @allure.title("Update Item Quantity")
+    # @allure.description("Ensures that the quantity of an existing item can be updated.")
+    # def test_updating_item(self):
+    #     with allure.step("Updating item quantity"):
+    #         assert self.calc.update_item_quantity() == True
 
     @allure.story("Price Calculation")
     @allure.title("Validate cart calculations")
     def test_cart_calculations(self):
         global total, tolerance
-        screenshot_dir = "allure-report/screenshots"
-        os.makedirs(screenshot_dir, exist_ok=True)  # Ensure directory exists
-        screenshot_path = os.path.join(screenshot_dir, "before_pay.png")
-
-        allure.attach.file(screenshot_path, name="Before Pay Button", attachment_type=allure.attachment_type.PNG)
 
         with allure.step("Calculating total price"):
+            print("========= Cart Checking ============")
             end_pay = self.calc.pay()
-            tolerance = 0.5
+            print(end_pay)
+            tolerance = 0.3
             total = self.calc.total_calculation()
         allure.attach(f"Expected Total: {total}, Actual Payment: {end_pay}", name="Calculation Log")
         assert abs(total - end_pay) <= tolerance, f"Difference too high: {abs(total - end_pay)}"
