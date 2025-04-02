@@ -6,7 +6,7 @@ total = None
 tolerance = None
 surcharge = None
 
-@allure.feature("Developer 1 Report")
+@allure.feature("Setup Testflow")
 class TestSetUpFlow:
     @pytest.fixture(autouse=True)
     def setup_driver(self, appium_driver):
@@ -60,6 +60,46 @@ class TestSetUpFlow:
     
     def test_tip_check(self):
         assert self.setup.check_tip() is True
+        
+    def test_cash_pay(self):
         assert self.calc.cash_pay() is True
+        
+    def test_delete_tip(self):
+        assert self.setup.remove_tip() is True
+        
+    def test_delete_ordernote(self):
+        assert self.setup.remove_ordernote() is True
+        
+    def test_delete_discount(self):
+        assert self.setup.remove_discount() is True
+    
+    def test_delete_taxes(self):
+        assert self.setup.remove_tax() is True
+        
+    def test_removed_setup(self):
+        assert self.setup.setup_check() is True
             
+    def test_removed_discount_check(self):
+        assert self.setup.check_discount(1) is True
+    
+    def test_removed_tax_check(self):
+        assert self.setup.check_tax(1) is True
+        
+    def test_calculations(self):
+        total = self.calc.total_calculation()
+        endpay = self.calc.pay()
+        assert abs(total - endpay) <= 0.3, f"Total ({total}) and Pay ({endpay}) difference exceeded limit!"
+    
+    def test_removed_tax_check(self):
+        assert self.setup.check_tax(1) is True
+    
+    def test_removed_tip_check(self):
+        assert self.setup.check_tip(1) is True
+        
+    def test_final_cashpay(self):
+        assert self.calc.cash_pay() is True
+        
+        
+    
+        
         

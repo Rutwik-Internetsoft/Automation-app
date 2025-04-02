@@ -56,12 +56,12 @@ class TestOpenOrderCard:
         with allure.step("Adding a manual item"):
             assert self.calc.manual_item() == True
 
-    # @allure.story("Item Quantity Update")
-    # @allure.title("Update Item Quantity")
-    # @allure.description("Ensures that the quantity of an existing item can be updated.")
-    # def test_updating_item(self):
-    #     with allure.step("Updating item quantity"):
-    #         assert self.calc.update_item_quantity() == True
+    @allure.story("Item Quantity Update")
+    @allure.title("Update Item Quantity")
+    @allure.description("Ensures that the quantity of an existing item can be updated.")
+    def test_updating_item(self):
+        with allure.step("Updating item quantity"):
+            assert self.calc.update_item_quantity() == True
 
     @allure.story("Price Calculation")
     @allure.title("Validate cart calculations")
@@ -123,10 +123,10 @@ class TestOpenOrderCard:
         with allure.step("Validating order type"):
             assert self.calc.isOrder("OPEN ORDER") == True
 
-    # @allure.story("Refund Processing")
-    # @allure.title("Process a card refund")
-    # def test_refund(self):
-    #     with allure.step("Processing refund"):
-    #         refunded = self.calc.card_refund()
-    #     allure.attach("Refund Processed Successfully", name="Refund Log")
-    #     assert refunded == True
+    @allure.story("Refund Processing")
+    @allure.title("Process a card refund")
+    def test_refund(self):
+        with allure.step("Processing refund"):
+            refunded = self.calc.card_refund()
+        allure.attach("Refund Processed Successfully", name="Refund Log")
+        assert refunded == True

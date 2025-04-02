@@ -1,0 +1,10 @@
+{
+    "__init__": "No description",
+    "price_checking_cash": "No description",
+    "price_checking_card": "No description",
+    "gift_card_balance": "No description",
+    "splitting_cash": "No description",
+    "splitting_card": "No description",
+    "splitting_gift_card": "No description",
+    "transaction_checking": "No description"
+}

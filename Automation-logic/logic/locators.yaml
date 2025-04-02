@@ -576,7 +576,6 @@ cash_log:
 
 setup:
 
-
   tips_btn:
     by: xpath
     locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/txtTitle" and @text="Tips"]'
@@ -592,6 +591,10 @@ setup:
   tip_amt:
    by: xpath
    locator: '//android.widget.EditText[@resource-id="com.pays.pos:id/edt_tip"]'
+
+  tip_delete:
+    by: xpath
+    locator: '//android.widget.TextView[@resource-id="com.pays.pos:id/title" and @text="Delete"]'
 
   taxes_btn:
     by: xpath

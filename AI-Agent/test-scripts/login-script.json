@@ -1,0 +1,24 @@
+{
+    "class_name": "Login",
+    "description": "Handles login and passcode entry for the POS system.",
+    "functions": [
+        {
+            "function_name": "check_if_main_page",
+            "description": "Checks if the user is already logged in by verifying the presence of the main page indicator.",
+            "parameters": [],
+            "code": "def check_if_main_page(self):\n    try:\n        self.wait.until(EC.presence_of_element_located(self.locators.main_page_indicator))\n        print('Already logged in!')\n        return True\n    except Exception:\n        print('Not Logged in yet')\n        return False"
+        },
+        {
+            "function_name": "login",
+            "description": "Performs login by entering credentials and clicking the login button.",
+            "parameters": [],
+            "code": "def login(self):\n    if self.check_if_main_page():\n        return True\n    try:\n        self.wait.until(EC.presence_of_element_located(self.locators.username_field)).send_keys('automation@yopmail.com')\n        self.wait.until(EC.presence_of_element_located(self.locators.password_field)).send_keys('654321')\n        self.wait.until(EC.element_to_be_clickable(self.locators.login_button)).click()\n        self.wait.until(EC.presence_of_element_located(self.locators.nav_host))\n        print('Login successful!')\n        return True\n    except Exception as e:\n        print(f'Login failed: {e}')\n        return False"
+        },
+        {
+            "function_name": "passcode",
+            "description": "Handles passcode entry after login if required.",
+            "parameters": [],
+            "code": "def passcode(self):\n    try:\n        self.wait.until(EC.presence_of_element_located(self.locators.main_page_indicator))\n        return True\n    except Exception:\n        pass\n    try:\n        time.sleep(2)\n        self.wait.until(EC.presence_of_element_located(self.locators.passcode_field)).send_keys('1111')\n        self.wait.until(EC.presence_of_element_located(self.locators.action_bar_root))\n        self.wait.until(EC.presence_of_element_located(self.locators.main_page_indicator))\n        return True\n    except Exception as e:\n        print(f'Passcode entry failed: {e}')\n        return False"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "__init__": "No description",
+    "firing_items": "No description",
+    "connecting_printer": "No description",
+    "dine_in": "No description",
+    "adding_items_dine_in": "No description",
+    "paying_individually": "No description",
+    "swipe_down": "No description",
+    "get_all_pay_texts": "No description",
+    "update_order": "No description",
+    "add_guests": "No description",
+    "remove_guests": "No description",
+    "wastage": "No description",
+    "merge_tables": "Handles the merging of tables by selecting floors and tables sequentially."
+}

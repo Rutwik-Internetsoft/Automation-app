@@ -1,6 +1,5 @@
 import yaml
 from appium.webdriver.common.appiumby import AppiumBy
-import random
 
 class LocatorLoader:
     def __init__(self, locator_file: str, default_section: str = "common"):
@@ -261,4 +260,6 @@ class Locators(LocatorLoader):
         self.order_note_add_btn = self.locator_loader.get_locator("order_note_add_btn", "setup")
         self.order_note_title = self.locator_loader.get_locator("order_note_title","setup")
         self.delete_order = self.locator_loader.get_locator("delete_order","setup")
+        self.delete_btn = self.locator_loader.get_locator("tip_delete","setup")
+        
         

@@ -1,0 +1,27 @@
+{
+    "__init__": "This is the constructor for the class, which initializes various elements such as the Appium driver, short, medium, and long wait times, and locators. It also sets up calculation and locator methods to be used throughout the class.",
+    
+    "check_note": "This method checks for and adds a note (either 'item_note' or 'add_note'). It clicks the relevant menu to add the note and verifies that the note has been added correctly. It returns either a success message or an error message depending on the outcome.",
+    
+    "check_discount": "This method checks and applies a discount to an order. If the 'check' parameter is set to 0 or None, it scrolls through a list of discounts and applies one. If 'check' is set to 1, it tries to apply a discount from a specific list. The method returns a success message if the discount is applied successfully, or an error message if something goes wrong.",
+    
+    "check_tax": "This method checks for the presence or removal of tax (labeled 'SBT'). If no 'check' value is provided, it verifies that tax is added. If 'check' is set to 1, it checks if tax has been removed. It returns a success or error message based on the result.",
+    
+    "add_multiple_items": "This method adds a specified number of items to the order. If no specific number is provided, it randomly selects between 2 and 5 items. For each item to be added, the method first randomly selects a category from the available categories and clicks on it. Then, it randomly selects an item within that category and clicks it. If modifiers are present for the item, the method waits for them to appear and randomly selects two distinct modifiers to apply. Finally, it clicks the 'done' button to confirm the selection. If any errors occur during any of these steps (e.g., elements not found), the method skips to the next step. The method returns 'True' if items were successfully added, or an error message if an issue occurs.",
+
+    "setting_up": "This method navigates through the app to the setup menu. It clicks the main menu button and then the setup button to initialize the setup process. If successful, it returns True; otherwise, it returns an error message.",
+    
+    "tip_editing": "This method adds a new tip option in the system. It sets up the menu if necessary, navigates to the tip section, and adds a new tip named 'Good Service' with a value of 10%. After saving, it verifies if the tip has been added correctly. If the tip is successfully added and saved, it returns True; otherwise, it returns False. It also includes a drag gesture for some element actions.",
+    
+    "tax_editing": "This method adds a new tax option in the system. It sets up the menu if needed, navigates to the tax section, and adds a new tax named 'SBT' with a value of 5%. After saving, it verifies whether the tax has been added successfully. If successful, it returns True; otherwise, it returns an error message.",
+
+    "discount_editing": "This method adds a new discount option called 'Happy Hours' with a 15% discount. It navigates to the discount section, inputs the discount name and amount, and saves the changes. It then checks whether the discount was successfully added by verifying the amount. If the discount amount is correct, it returns True; otherwise, it returns an error message.",
+    
+    "order_note_editing": "This method adds a new order note named 'Add Salt' to the system. It navigates to the order note section, adds the new note, and then saves it. The note is then moved to a specific position using a drag gesture. If successful, it returns True; otherwise, it returns an error message.",
+    
+    "setup_check": "This method checks if the setup is correct by clicking the home icon, navigating to the takeout section, and adding two items. If successful, it returns True; otherwise, it returns an error message.",
+    
+    "check_tip": "This method checks and manages tips. It can scroll through the list of tips and either click on an existing tip or add a new tip. If 'check' is set to 0 or None, it tries to find the tip 'Good Service', clicks on it, and saves. If 'check' is set to 1, it scrolls through the list, attempts to find 'Good Service', and if not found, it selects a random percentage (10%, 20%, or 30%) as the new tip. If the tip is found or added successfully, it returns True; otherwise, it returns an error message or a specific failure message.",
+      
+    "remove_tip": "No description"
+}

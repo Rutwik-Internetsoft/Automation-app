@@ -1,0 +1,17 @@
+{
+    "__init__": "Initializes the Dependencies class, which holds instances of various modules for different functionalities like Login, Calculations, Dining, etc.",
+
+    "get_login": "Lazy initializes the Login class from the Logic folder, returning the Login class instance to perform login-related actions.",
+    
+    "get_calculations": "Lazy initializes the Calculations class from the Logic folder, returning the Calculations class instance to perform calculation-related actions.",
+    
+    "get_dining_order": "Lazy initializes the Dining class from the Logic folder, returning the Dining class instance to perform dining-related actions such as placing orders.",
+    
+    "get_split_order": "Lazy initializes the Split_cash class from the Logic folder, returning the Split_cash class instance to manage split order functionality.",
+    
+    "get_loyality": "Lazy initializes the Loyality class from the Logic folder, handling loyalty program-related actions (imports only when needed to avoid circular imports).",
+    
+    "get_cash_log": "Lazy initializes the Cash_log class from the Logic folder, returning the Cash_log class instance to handle cash log-related actions.",
+    
+    "get_setup": "Lazy initializes the Setup class from the Logic folder, returning the Setup class instance for setup-related actions in the application."
+}

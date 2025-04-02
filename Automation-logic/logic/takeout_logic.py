@@ -149,15 +149,6 @@ class Calculations:
             print(f"Error in tip: {e}")
             return Exception   
 
-    def card_amount(self):
-        try:
-            card_text = self.wait.until(EC.presence_of_element_located(self.locators.card_amount)).text
-            match = re.search(r"\$(\d+\.\d+)", card_text)
-            amount = float(match.group(1)) if match else 0.0
-            return amount
-        except Exception as e:
-            print(f"Error in amount: {e}")
-            return Exception
 
     def add_multiple_items(self,num_items_to_add = None):
         try:
@@ -167,7 +158,6 @@ class Calculations:
 
             for _ in range(num_items_to_add):
                 try:
-                    # Select a random category (assuming categories are between indices 2 and 8)
                     category_index = random.randint(2, 8)
                     category = f'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvCategory"]/androidx.appcompat.widget.LinearLayoutCompat[{category_index}]'
                     self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH, category))).click()

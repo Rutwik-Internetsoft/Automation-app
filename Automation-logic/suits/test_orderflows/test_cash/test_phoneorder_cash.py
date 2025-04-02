@@ -18,7 +18,7 @@ class TestPhoneOrderCash:
         
         assert self.phone.order("Phone Order") == True
         assert self.phone.phone_order() == True
-        assert self.phone.add_multiple_items() is True
+        assert self.phone.add_multiple_items(3) is True
         assert self.phone.cash_payment() == True
         self.phone.transaction()
         assert self.phone.cash_refund() == True

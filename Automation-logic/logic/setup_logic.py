@@ -18,6 +18,8 @@ class Setup:
         self.locators.calculations_locators()
         self.locators.common_locators()
         self.locators.set_up()
+ 
+#================Checking Setup===============
     
     def check_note(self,note_type = None):
         try:
@@ -42,6 +44,7 @@ class Setup:
                 return f"Wrong Note Added:- {l}"
         except Exception as e:
             print("Cannot add Note")
+            return f"Error is {e}"
     
     def check_discount(self,check = None):
         try:
@@ -125,6 +128,46 @@ class Setup:
                 print("Element not found")
                 return f"Error is {e}"
     
+    def check_tip(self,check = None):
+        try:
+            self.wait.until(EC.presence_of_element_located(self.locators.tip_button)).click()
+            if check == 0 or check is None:
+                try:
+                    element = self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
+                    f'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollIntoView(new UiSelector().text("Good Service"))')
+                    time.sleep(2)
+                    element.click()
+                    print("✅ Element found and clicked!")
+                    self.wait.until(EC.presence_of_element_located(self.locators.txtsave)).click()
+                    return True
+                except:
+                    print("❌ Element not found after scrolling.")
+                    return False            
+            elif check == 1:
+                try:
+                    checking = False
+                    element = self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,
+                    f'new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollIntoView(new UiSelector().text("Good Service"))')
+                    
+                    element.click()
+                    self.wait.until(EC.presence_of_element_located(self.locators.txtsave)).click()
+
+                    return False                   
+                except:
+                    checking = True                
+                
+                if checking is True:
+                    percentage_options = ['txt10', 'txt20', 'txt30']
+            
+                    chosen_option = random.choice(percentage_options)
+            
+                    self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,f'//android.widget.TextView[@resource-id="com.pays.pos:id/{chosen_option}"]'))).click()
+                
+                    self.wait.until(EC.presence_of_element_located(self.locators.txtsave)).click()
+                    return True
+        except Exception as e:
+           return f"error {e}"
+    
     def add_multiple_items(self,num_items_to_add = None):
         try:
             if num_items_to_add is None:
@@ -171,16 +214,9 @@ class Setup:
                     pass
             return True
         except Exception as e:
-            return f"Error is {e}"
+            return f"Error is {e}"     
     
-    def setting_up(self):
-        try:
-            self.wait.until(EC.element_to_be_clickable(self.locators.main_menu_button)).click() 
-            
-            self.wait.until(EC.element_to_be_clickable(self.locators.setup_btn)).click() 
-            return True
-        except Exception as e:
-            return f"Error is {e}"            
+#===============Editing Setup================
     
     def tip_editing(self):
         try:
@@ -204,6 +240,7 @@ class Setup:
             text_views = self.driver.find_elements(AppiumBy.XPATH, 
     '//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvTipList"]'
     '/androidx.appcompat.widget.LinearLayoutCompat[4]/androidx.appcompat.widget.LinearLayoutCompat//android.widget.TextView')
+            
             if text_views[0].text!= "Good Service" or text_views[1].text!= "10.00%":
                 return False
             time.sleep(2)
@@ -308,65 +345,128 @@ class Setup:
         except Exception as e:
             return f"Error as {e}"
         
+        
+#===============Set Up===================
+        
     def setup_check(self):
         try:
-            self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
+            try:
+                self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
+            except:
+                pass
             self.wait.until(EC.presence_of_element_located(self.locators.takeout_btn)).click()
             self.add_multiple_items(2)
             return True
             
         except Exception as e:
             return f"Error is as {e}"
-        
-    def check_tip(self,check = None):
+    
+    def setting_up(self):
         try:
-            self.wait.until(EC.presence_of_element_located(self.locators.tip_button)).click()
-            if check == 0 or check is None:
-                try:
-                    self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true))''.setAsHorizontalList().scrollToEnd(10)')
-                    print("✅ Scrolled to the end.")
-                except:
-                    print("⚠️ Could not scroll to the end. The list may be small.")
-                try:
-                    element = self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@resource-id="com.pays.pos:id/txtName" and @text="Good Service"]')))
-                    element.click()
-                    print("✅ Element found and clicked!")
-                except:
-                    print("❌ Element not found after scrolling.")
-                    return False
-                self.wait.until(EC.presence_of_element_located(self.locators.txtsave)).click()
-                return True
+            self.wait.until(EC.element_to_be_clickable(self.locators.main_menu_button)).click() 
             
-            elif check == 1:
-                try:
-                    checking = False
-                    self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR,'new UiScrollable(new UiSelector().scrollable(true))''.setAsHorizontalList().scrollToEnd(10)')
-                    print("✅ Scrolled to the end.")
-                except:
-                    print("⚠️ Could not scroll to the end. The list may be small.")
-                try:
-                    element = self.wait.until(
-                        EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@resource-id="com.pays.pos:id/txtName" and @text="Good Service"]')))
-                    element.click()
-                except:
-                    checking = True
-                if checking is True:
-                    percentage_options = ['txt10', 'txt20', 'txt30']
-            
-                    chosen_option = random.choice(percentage_options)
-            
-                    self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,f'//android.widget.TextView[@resource-id="com.pays.pos:id/{chosen_option}"]'))).click()
-                
-                    self.wait.until(EC.presence_of_element_located(self.locators.txtsave)).click()
-                    return True
-            if check is None or check==1: 
-                return f"The Tip not found"
-            else:
-                return f"The Tip was not deleted"
+            self.wait.until(EC.element_to_be_clickable(self.locators.setup_btn)).click() 
+            return True
         except Exception as e:
-           return f"error {e}"
+            return f"Error is {e}"           
+
+
+#===========Removing Setup================
 
     def remove_tip(self):
-        pass
+        try:
+            self.setting_up()
+            self.wait.until(EC.presence_of_element_located(self.locators.tips_btn)).click()
+            
+            r = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvTipList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            
+            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'//android.widget.TextView[@text="Good Service"]/following-sibling::*[@resource-id="com.pays.pos:id/layout_menu"]'))).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.delete_btn)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            time.sleep(2)
+            m = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvTipList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
+            
+            if m<r:
+                return True
+            else:
+                return False
+            
+        except Exception as e:
+            return f"error is {e}"
+        
+    def remove_tax(self):
+        
+        try:
+            self.setting_up()
+        except:
+            pass
+        try:
+            self.wait.until(EC.element_to_be_clickable(self.locators.taxes_btn)).click() 
+            m = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvTaxList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            
+            assert self.wait.until(EC.presence_of_element_located(self.locators.tax_added_successfully)),"Tax not Added"
+            
+            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'(//android.widget.ImageView[@content-desc="Menu"])[4]'))).click()            
+            self.wait.until(EC.presence_of_element_located(self.locators.delete_btn)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            time.sleep(2)
+            r = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvTaxList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
+            if r<m:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print("Tip Not ADD")
+            return f"Errorr is {e}"
 
+    def remove_discount(self):
+        
+        try:
+            self.setting_up()
+        except:
+            pass
+        try:
+            self.wait.until(EC.element_to_be_clickable(self.locators.discount_btn)).click() 
+            m = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvDiscountList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            
+            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'//android.widget.TextView[@text="Happy Hours"]/following-sibling::*[@resource-id="com.pays.pos:id/layout_menu"]'))).click()
 
+            self.wait.until(EC.presence_of_element_located(self.locators.delete_btn)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            time.sleep(2)
+            r = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvDiscountList"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
+            if r<m:
+                return True
+            else:
+                return False
+        except Exception as e:
+            print("Tip Not ADD")
+            return f"Errorr is {e}"
+
+    def remove_ordernote(self):
+        try:
+            self.setting_up()
+            self.wait.until(EC.presence_of_element_located(self.locators.order_note_btn)).click()
+            
+            r = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvNoteLise"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            
+            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'(//android.widget.ImageView[@content-desc="Menu"])[1]'))).click()            
+            #//android.widget.TextView[@text="Add Salt"]
+            self.wait.until(EC.presence_of_element_located(self.locators.delete_btn)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            self.wait.until(EC.presence_of_element_located(self.locators.save)).click()
+            
+            m = len(self.wait.until(EC.presence_of_all_elements_located((AppiumBy.XPATH,'//androidx.recyclerview.widget.RecyclerView[@resource-id="com.pays.pos:id/rvNoteLise"]/androidx.appcompat.widget.LinearLayoutCompat/androidx.appcompat.widget.LinearLayoutCompat'))))
+            self.wait.until(EC.presence_of_element_located(self.locators.home_icon)).click()
+            if m<r:
+                return True
+            else:
+                return False
+        except Exception as e:
+            return f"error is {e}"

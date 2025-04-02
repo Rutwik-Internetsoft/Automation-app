@@ -1,0 +1,11 @@
+{
+    "__init__": "This is the constructor method for the class that initializes the Appium driver, WebDriverWait, and the locators. It takes an 'appium_driver' as an argument, which represents the Appium driver instance used for interacting with the application. The constructor sets up a wait time of 3 seconds using 'WebDriverWait' for elements to be located. The 'Locators' class is then instantiated, and the 'login_page_locators' method is called to retrieve and set up locators for the login page elements. This initialization process allows the rest of the class methods to interact with the app using these locators."
+,
+
+    "check_if_main_page": "This method checks if the user is already logged in by verifying the presence of the 'main_page_indicator' element on the page. If the element is found, it assumes the user is logged in and prints a success message ('Already logged in!'). If the element is not found, it prints a message indicating the user is not logged in ('Not Logged in yet') and returns False. This method is useful for determining the login state before attempting to log in again.",
+
+    "login": "This method attempts to log the user in if they are not already logged in, by first checking the login state using the 'check_if_main_page' method. If the user is already logged in, it returns True. If not, it interacts with the login fields: entering a pre-defined username and password, and clicking the login button. After that, it waits for the 'nav_host' element to appear, indicating successful login, and prints a success message ('Login successful!'). The method returns True if the login is successful, or False if any error occurs during the process.",
+    
+    "passcode": "This method handles the process of entering the passcode if the user is not already logged in. It first checks for the presence of the 'main_page_indicator' element to see if the user is already logged in. If the main page is not already present, the method proceeds to enter a passcode ('1111') into the 'passcode_field' element and waits for the 'action_bar_root' and 'main_page_indicator' elements to be located, indicating successful login. If the process fails at any step, it catches the exception, prints an error message ('Passcode entry failed'), and returns 'False'. If successful, it returns 'True'."
+
+}

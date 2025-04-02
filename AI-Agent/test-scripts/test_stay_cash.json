@@ -1,0 +1,150 @@
+{
+    "test_class": "TestStayCash",
+    "description": "Automation tests for Stay order with cash payment in POS.",
+    "tests": [
+      {
+        "test_name": "test_stayorder_btn",
+        "title": "Select Stay Order",
+        "description": "Verifies that the user can successfully select the 'Stay' order type in POS.",
+        "steps": [
+          {
+            "step": "Selecting 'Stay' from Order Types",
+            "function": "self.calc.order",
+            "parameters": ["Stay"],
+            "expected_result": "Returns True if order type is selected successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_manual_item_and_qty",
+        "title": "Add a Manual Item and Set Quantity",
+        "description": "Tests if a manual item can be added with a specified quantity.",
+        "steps": [
+          {
+            "step": "Adding a manual item",
+            "function": "self.calc.manual_item",
+            "parameters": [],
+            "expected_result": "Returns True if manual item is added successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_adding_customers",
+        "title": "Adding New Customers",
+        "description": "Tests if new customers can be added to the POS system.",
+        "steps": [
+          {
+            "step": "Adding a new customer",
+            "function": "self.calc.adding_new_customer",
+            "parameters": [],
+            "expected_result": "Returns True if customer is added successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_add_multiple_item",
+        "title": "Add Multiple Items",
+        "description": "Tests if multiple items can be added to a single order.",
+        "steps": [
+          {
+            "step": "Adding 2 items to the cart",
+            "function": "self.calc.add_multiple_items",
+            "parameters": [2],
+            "expected_result": "Returns True if 2 items are added successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_updating_item",
+        "title": "Update Item Quantity",
+        "description": "Ensures that the quantity of an existing item can be updated.",
+        "steps": [
+          {
+            "step": "Updating item quantity",
+            "function": "self.calc.update_item_quantity",
+            "parameters": [],
+            "expected_result": "Returns True if item quantity is updated successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_pay_check",
+        "title": "Verify Total Calculation & Payment",
+        "description": "Validates that the total amount before payment matches the expected calculations.",
+        "steps": [
+          {
+            "step": "Fetching amount displayed on Pay button",
+            "function": "self.calc.pay",
+            "parameters": [],
+            "expected_result": "Returns the amount displayed on Pay button."
+          },
+          {
+            "step": "Performing total price calculation",
+            "function": "self.calc.total_calculation",
+            "parameters": [],
+            "expected_result": "Returns the calculated total amount."
+          },
+          {
+            "step": "Validating displayed and calculated totals",
+            "assertion": ["pay_button_amount", "calculated_total"],
+            "expected_result": "Returns True if both values match within a tolerance of 0.3."
+          }
+        ]
+      },
+      {
+        "test_name": "test_card_amt_hike_check",
+        "title": "Verify Card Payment with Surcharge",
+        "description": "Checks if the total amount with surcharge matches the card payment deduction.",
+        "steps": [
+          {
+            "step": "Fetching card payment amount",
+            "function": "self.calc.card_amount",
+            "parameters": [],
+            "expected_result": "Returns the total amount deducted for card payment."
+          },
+          {
+            "step": "Calculating total amount including surcharge",
+            "function": "self.calc.surcharge_percentage",
+            "parameters": [],
+            "expected_result": "Returns the surcharge percentage applied."
+          },
+          {
+            "step": "Validating surcharge calculation",
+            "assertion": ["card_payment", "total_with_surcharge"],
+            "expected_result": "Returns True if values match within a tolerance of 0.3."
+          }
+        ]
+      },
+      {
+        "test_name": "test_cash_amt_check",
+        "title": "Verify Cash Payment Amount",
+        "description": "Checks if the cash payment amount matches the expected total.",
+        "steps": [
+          {
+            "step": "Fetching cash payment amount",
+            "function": "self.calc.cash_amount",
+            "parameters": [],
+            "expected_result": "Returns the total amount deducted for cash payment."
+          },
+          {
+            "step": "Validating cash payment amount",
+            "assertion": ["cash_payment", "total_amount"],
+            "expected_result": "Returns True if values match within a tolerance of 0.3."
+          }
+        ]
+      },
+      {
+        "test_name": "test_cash_pay",
+        "title": "Complete Cash Payment",
+        "description": "Ensures that cash payments can be successfully processed.",
+        "steps": [
+          {
+            "step": "Processing cash payment",
+            "function": "self.calc.cash_pay",
+            "parameters": [],
+            "expected_result": "Returns True if payment is successful."
+          }
+        ]
+      }
+    ]
+  }

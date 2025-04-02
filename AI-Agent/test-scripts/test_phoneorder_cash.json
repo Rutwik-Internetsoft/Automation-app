@@ -1,0 +1,227 @@
+{
+    "test_cases": [
+      {
+        "title": "Process a phone order with cash payment and refund",
+        "story": "Phone Order Payment",
+        "steps": [
+          {
+            "step":"Click on Phone order Button",
+            "action": "order",
+            "function":"self.calc.order", 
+            "parameters": ["Phone Order"], 
+            "expected_result": true
+        },
+          
+          {
+            "step":"Add a New customer and brings back to cart", 
+            "action":"phone_order" ,
+            "function":"self.calc.phone_order", 
+            "parameters": [], 
+            "expected_result": true
+        },
+            
+          {
+            "step": "Add 3 Items to the cart",
+            "action": "add_multiple_items",
+            "function":"self.calc.add_multiple_items", 
+            "parameters": [3], 
+            "expected_result": true
+        },
+
+        {
+            "step": "Do Cash Payment",
+            "action": "cash_payment", 
+            "function":"self.calc.cash_payment",
+            "parameters": [], 
+            "expected_result": true
+        },
+          
+          {
+            "step": "Click on transaction and check the amount in transactions page",
+            "action": "transaction", 
+            "function":"self.calc.transaction",
+            "parameters": [],
+            "expected_result": "Returns True if Transaction amount and total amount we calculated "
+        },
+          
+          {
+            "step": "Click on refund button and check if amount is refunded",
+            "action": "cash_refund", 
+            "function":"self.calc.cash_refund",
+            "parameters": [], 
+            "expected_result": true
+        }
+        ]
+      },
+      {
+        "title": "Process a phone order with Save and then Pay",
+        "story": "Phone Order Save and Pay",
+        "steps": [
+          {
+            "step": "Click on Phone order Button",
+            "action": "order", 
+            "function": "self.phone.order",
+            "parameters": ["Phone Order"], 
+            "expected_result": true
+        },
+        {
+            "step":"Add a New customer and brings back to cart", 
+            "action":"phone_order" ,
+            "function":"self.calc.phone_order", 
+            "parameters": [], 
+            "expected_result": true
+        },
+        
+        {
+            "step": "Add 3 Items to the cart",
+            "action": "add_multiple_items",
+            "function":"self.calc.add_multiple_items", 
+            "parameters": [3], 
+            "expected_result": true
+        },          
+        
+        {
+            "step": "Applying a discount",
+            "action": "add_discount",
+            "function": "self.calc.add_discount",
+            "parameters": [],
+            "expected_result": "Returns True if discount is applied successfully."
+          },
+
+        {
+            "step": "Store the amount on pay button on Cart page",
+            "action": "pay", 
+            "function":"sel.calc.pay",
+            "parameters": ["yes"], 
+            "store_result": "trn_pay"
+        },
+        
+        {
+            "step":"Click on the Pay button on Save order page",
+            "action": "save_order", 
+            "function": "self.calc.save_order",
+            "parameters": ["Pay"], 
+            "store_result": "pend_pay"
+        },
+        
+        {            
+            "step":"Checking amount on the payment page",
+            "action": "cash_amount", 
+            "function":"self.calc.cash_amount",
+            "parameters": [], 
+            "store_result": "endpay"},
+        
+        {"assertion": ["endpay", "pend_pay", "trn_pay"]},
+        
+        {
+            "step":"Pay using Cash",
+            "action": "cash_pay", 
+            "function": "self.calc.cash_pay",
+            "parameters": [], 
+            "expected_result": true}
+        ]
+      },
+      {
+        "title": "Process a phone order with Save and then Pay",
+        "story": "Phone Order Save and Update and Pay",
+        "steps": [
+            {
+                "step": "Click on Phone order Button",
+                "action": "order", 
+                "function":"self.phone.order",
+                "parameters": ["Phone Order"], 
+                "expected_result": true
+            },
+            {
+                "step":"Add a New customer and brings back to cart", 
+                "action":"phone_order" ,
+                "function":"self.calc.phone_order", 
+                "parameters": [], 
+                "expected_result": true
+            },
+            
+            {
+                "step": "Add 3 Items to the cart",
+                "action": "add_multiple_items",
+                "function":"self.calc.add_multiple_items", 
+                "parameters": [3], 
+                "expected_result": true
+            },   
+
+          {
+            "step":"Save order and then Update it by clicking on Update button on the save order page",
+            "action": "save_order", 
+            "function": "self.phone.save_order",
+            "parameters": ["Update"], 
+            "expected_result": true
+        },
+        {
+            "step": "Store the amount on pay button on Cart page",
+            "action": "pay", 
+            "function":"sel.calc.pay",
+            "parameters": ["yes"], 
+            "store_result": "trn_pay"
+        },
+        {
+            "step":"Click on the Pay button on Save order page",
+            "action": "save_order", 
+            "function": "self.calc.save_order",
+            "parameters": ["Pay"], 
+            "store_result": "pend_pay"
+        },
+        
+        {            
+            "step":"Checking amount on the payment page",
+            "action": "cash_amount", 
+            "function":"self.calc.cash_amount",
+            "parameters": [], 
+            "store_result": "endpay"},
+        
+        {"assertion": ["endpay", "pend_pay", "trn_pay"]},
+        
+        {
+            "step":"Pay using Cash",
+            "action": "cash_pay", 
+            "function": "self.calc.cash_pay",
+            "parameters": [], 
+            "expected_result": true}
+        ]
+      },
+      {
+        "title": "Process a phone order and Cancel it",
+        "story": "Phone Order Save and Cancel",
+        "steps": [  {
+            "step": "Click on Phone order Button",
+            "action": "order", 
+            "function":"self.phone.order",
+            "parameters": ["Phone Order"], 
+            "expected_result": true
+        },
+        {
+            "step":"Add a New customer and brings back to cart", 
+            "action":"phone_order" ,
+            "function":"self.calc.phone_order", 
+            "parameters": [], 
+            "expected_result": true
+        },
+        
+        {
+            "step": "Add 3 Items to the cart",
+            "action": "add_multiple_items",
+            "function":"self.calc.add_multiple_items", 
+            "parameters": [3], 
+            "expected_result": true
+        },   
+
+      {
+        "step":"Save order and then Update it by clicking on Update button on the save order page",
+        "action": "save_order", 
+        "function": "self.phone.save_order",
+        "parameters": ["Cancel"], 
+        "expected_result": true
+    }
+        ]
+      }
+    ]
+  }
+  

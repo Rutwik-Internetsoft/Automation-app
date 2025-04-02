@@ -1,0 +1,166 @@
+{
+  "test_class": "TestTakeoutFlow",
+  "description": "Automation tests for Takeout order with cash payment in POS.",
+  "tests": [
+    {
+      "test_name": "test_take_out_btn",
+      "title": "Select Takeout Order",
+      "description": "Verifies that the user can successfully select the 'Takeout' option in POS.",
+      "steps": [
+        {
+          "step": "Selecting 'Takeout' from Order Types",
+          "function": "self.calc.order",
+          "parameters": ["Take Out"],
+          "expected_result": "Returns True if order type is selected successfully."
+        }
+      ]
+    },
+    {
+      "test_name": "test_adding_items",
+      "title": "Add Multiple Items to the Cart",
+      "description": "Ensures multiple items can be successfully added to the cart.",
+      "steps": [
+        {
+          "step": "Adding 3 items to the cart",
+          "function": "self.calc.add_multiple_items",
+          "parameters": [3],
+          "expected_result": "Returns True if 3 items are added successfully."
+        }
+      ]
+    },
+    {
+      "test_name": "test_add_discount",
+      "title": "Apply Discount to the Order",
+      "description": "Ensures a discount can be applied to the order successfully.",
+      "steps": [
+        {
+          "step": "Applying a discount",
+          "function": "self.calc.add_discount",
+          "parameters": [],
+          "expected_result": "Returns True if discount is applied successfully."
+        }
+      ]
+    },
+    {
+      "test_name": "test_add_note",
+      "title": "Add a Note to the Order",
+      "description": "Verifies that a note can be added to an order successfully.",
+      "steps": [
+        {
+          "step": "Adding a note to the order",
+          "function": "self.calc.add_note",
+          "parameters": [],
+          "expected_result": "Returns True if the note is added successfully."
+        }
+      ]
+    },
+    {
+      "test_name": "test_cart_calculations",
+      "title": "Validate Total Price Calculation in Cart",
+      "description": "Ensures the total price of the cart items is calculated accurately before payment.",
+      "steps": [
+        {
+          "step": "Fetching amount displayed on Pay button",
+          "function": "self.calc.pay",
+          "parameters": [],
+          "expected_result": "Returns the amount displayed on Pay button."
+        },
+        {
+          "step": "Performing total price calculation",
+          "function": "self.calc.total_calculation",
+          "parameters": [],
+          "expected_result": "Returns the calculated total amount."
+        },
+        {
+          "step": "Validating displayed and calculated totals",
+          "function": "comparison",
+          "parameters": ["pay_button_amount", "calculated_total"],
+          "expected_result": "Returns True if both values match within a tolerance of 0.3."
+        }
+      ]
+    },
+    {
+      "test_name": "test_tip_added",
+      "title": "Verify Tip is Applied Correctly",
+      "description": "Ensures that the tip amount is correctly added to the total.",
+      "steps": [
+        {
+          "step": "Fetching applied tip percentage",
+          "function": "self.calc.tip",
+          "parameters": [],
+          "expected_result": "Returns the tip percentage applied to the order."
+        },
+        {
+          "step": "Fetching final amount after tip",
+          "function": "self.calc.cash_amount",
+          "parameters": [],
+          "expected_result": "Returns the total amount after tip."
+        },
+        {
+          "step": "Validating tip calculation",
+          "function": "comparison",
+          "parameters": ["calculated_tip_amount", "cash_amount"],
+          "expected_result": "Returns True if tip amount matches within a tolerance of 0.3."
+        }
+      ]
+    },
+    {
+      "test_name": "test_final_pay",
+      "title": "Complete Cash Payment",
+      "description": "Validates that a cash payment can be completed successfully.",
+      "steps": [
+        {
+          "step": "Processing cash payment",
+          "function": "self.calc.cash_pay",
+          "parameters": [],
+          "expected_result": "Returns True if payment is successful."
+        }
+      ]
+    },
+    {
+      "test_name": "test_transaction",
+      "title": "Validate Transaction Amount After Payment",
+      "description": "Ensures the recorded transaction amount matches the expected total.",
+      "steps": [
+        {
+          "step": "Fetching transaction amount from POS",
+          "function": "self.calc.transaction",
+          "parameters": [],
+          "expected_result": "Returns the recorded transaction amount."
+        },
+        {
+          "step": "Validating transaction amount against expected total",
+          "function": "comparison",
+          "parameters": ["transaction_amount", "total_amount"],
+          "expected_result": "Returns True if the values match within a tolerance of 0.3."
+        }
+      ]
+    },
+    {
+      "test_name": "test_orderType",
+      "title": "Ensure Order Type is TAKE OUT",
+      "description": "Ensures that the order type is correctly set to 'Take Out'.",
+      "steps": [
+        {
+          "step": "Validating order type",
+          "function": "self.calc.isOrder",
+          "parameters": ["TAKE OUT"],
+          "expected_result": "Returns True if order type is correctly set to 'Take Out'."
+        }
+      ]
+    },
+    {
+      "test_name": "test_refund",
+      "title": "Process a Cash Refund",
+      "description": "Ensures that a cash refund is processed successfully for a Takeout order.",
+      "steps": [
+        {
+          "step": "Processing refund",
+          "function": "self.calc.cash_refund",
+          "parameters": [],
+          "expected_result": "Returns True if refund is processed successfully."
+        }
+      ]
+    }
+  ]
+}

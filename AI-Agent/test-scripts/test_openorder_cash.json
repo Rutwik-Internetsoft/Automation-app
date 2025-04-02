@@ -1,0 +1,116 @@
+{
+    "test_class": "TestOpenOrderCash",
+    "description": "Automation tests for opening an order with cash payment in POS.",
+    "tests": [
+      {
+        "test_name": "test_openorder_btn",
+        "title": "Select 'Open Order' for Cash Payment",
+        "description": "Verifies that the user can successfully select the 'Open Order' option in POS.",
+        "steps": [
+          {
+            "step": "Selecting 'Open Order' from Order Types",
+            "function": "self.calc.order",
+            "parameters": ["Open Order"],
+            "expected_result": "Returns True if order type is selected successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_adding_items",
+        "title": "Add Multiple Items to the Cart",
+        "description": "Ensures multiple items can be successfully added to the cart.",
+        "steps": [
+          {
+            "step": "Adding 3 items to the cart",
+            "function": "self.calc.add_multiple_items",
+            "parameters": [3],
+            "expected_result": "Returns True if 3 items are added successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_add_note",
+        "title": "Add a Note to the Order",
+        "description": "Verifies that a note can be added to an order successfully.",
+        "steps": [
+          {
+            "step": "Adding a note to the order",
+            "function": "self.calc.add_note",
+            "parameters": [],
+            "expected_result": "Returns True if the note is added successfully."
+          }
+        ]
+      },
+      {
+        "test_name": "test_cart_calculations",
+        "title": "Validate Total Price Calculation in Cart",
+        "description": "Ensures the total price of the cart items is calculated accurately before payment.",
+        "steps": [
+          {
+            "step": "Fetching amount displayed on Pay button",
+            "function": "self.calc.pay",
+            "parameters": [],
+            "expected_result": "Returns the amount displayed on Pay button."
+          },
+          {
+            "step": "Performing total price calculation",
+            "function": "self.calc.total_calculation",
+            "parameters": [],
+            "expected_result": "Returns the calculated total amount."
+          },
+          {
+            "step": "Validating displayed and calculated totals",
+            "function": "comparison",
+            "parameters": ["pay_button_amount", "calculated_total"],
+            "expected_result": "Returns True if both values match within a tolerance of 0.3."
+          }
+        ]
+      },
+      {
+        "test_name": "test_final_pay",
+        "title": "Complete Cash Payment Transaction",
+        "description": "Validates that a cash payment can be completed successfully.",
+        "steps": [
+          {
+            "step": "Processing cash payment",
+            "function": "self.calc.cash_pay",
+            "parameters": [],
+            "expected_result": "Returns True if payment is successful."
+          }
+        ]
+      },
+      {
+        "test_name": "test_transaction",
+        "title": "Validate Transaction Amount After Payment",
+        "description": "Ensures the recorded transaction amount matches the expected total.",
+        "steps": [
+          {
+            "step": "Fetching transaction amount from POS",
+            "function": "self.calc.transaction",
+            "parameters": [],
+            "expected_result": "Returns the recorded transaction amount."
+          },
+          {
+            "step": "Validating transaction amount against expected total",
+            "function": "comparison",
+            "parameters": ["transaction_amount", "total_amount"],
+            "expected_result": "Returns True if the values match within a tolerance of 0.5."
+          }
+        ]
+      },
+      {
+        "test_name": "test_refund",
+        "title": "Process a Cash Item-Wise Refund",
+        "description": "Ensures that an item-wise refund is processed successfully for a cash order.",
+        "steps": [
+          {
+            "step": "Processing item-wise refund for cash payment",
+            "function": "self.calc.cash_itemwise_refund",
+            "parameters": [],
+            "expected_result": "Returns True if refund is processed successfully."
+          }
+        ]
+      }
+    ]
+  }
+  
