@@ -14,17 +14,15 @@ class Loyality:
         self.locators.common_locators()
         self.locators.calculations_locators()
         self.locators.loyality_locators()
-        
-        if calculations is None:
-            test_deps = Dependencies(self.driver)
-            self.calc = test_deps.get_calculations() 
-        else:
-            self.calc = calculations 
+        test_deps = Dependencies(self.driver)
+        self.calc = test_deps.get_calculations() 
+        self.number = "(754) 831-9219"
+        self.email = "Sophia4634@gmail.com"
             
     def adding_customer(self):
         try:
             self.wait.until(EC.presence_of_element_located(self.locators.add_customer)).click()
-            scrollable_command = ('new UiScrollable(new UiSelector().scrollable(true))''.scrollIntoView(new UiSelector().text("(335) 305-7152"))')
+            scrollable_command = ('new UiScrollable(new UiSelector().scrollable(true))'f'.scrollIntoView(new UiSelector().text("{self.number}"))')
             element = self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, scrollable_command)
             element.click()
         except Exception as e:
@@ -32,13 +30,12 @@ class Loyality:
     
     def finding_loyality_point(self):
         try:
-                   
-            self.wait.until(EC.presence_of_element_located((AppiumBy.XPATH,'//android.widget.ImageView[@resource-id="com.pays.pos:id/imgDrawer"]'))).click()
+            
+            self.wait.until(EC.presence_of_element_located(self.locators.main_menu_button)).click()
             
             self.wait.until(EC.presence_of_element_located(self.locators.customers)).click()
                     
-            scrollable_command = ('new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("(335) 305-7152 | Sophia8582@gmail.com"))')
-
+            scrollable_command = (f'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("{self.number} | {self.email}"))')
             # Wait for the element to be present and then click it
             element = self.wait.until(EC.presence_of_element_located((AppiumBy.ANDROID_UIAUTOMATOR, scrollable_command)))
             element.click()
@@ -69,7 +66,7 @@ class Loyality:
         
         self.loyality_points = self.finding_loyality_point()
         try:
-            self.calc.add_multiple_items()
+            self.calc.add_multiple_items(2)
             self.adding_customer()
             self.wait.until(EC.presence_of_element_located(self.locators.pay_button)).click()
 
