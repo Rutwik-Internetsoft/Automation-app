@@ -23,7 +23,7 @@ class Dining:
         
     def firing_items(self):
         try:
-            print(self.guests)
+            print(f"Number of guest is {self.guests}")
             scroll_to_top_cmd = 'new UiScrollable(new UiSelector().resourceId("com.pays.pos:id/rvItemList")).scrollToBeginning(10)'
             self.driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, scroll_to_top_cmd)
             for i in range(1,7):

@@ -5,9 +5,10 @@ import allure
 from typing import Dict, Any
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
-
+import subprocess
 from appium.webdriver.common.appiumby import AppiumBy
 import time
+from appium.webdriver.appium_service import AppiumService
 from logic.dependencies import Dependencies
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if project_root not in sys.path:
@@ -19,6 +20,8 @@ if project_root not in sys.path:
 
 class AppiumDriver:
     def __init__(self):
+        self.appium_service = AppiumService()
+        self.appium_service.start()
         self.driver = None
         self.url = "http://192.168.56.1:4723"        
         self.caps: Dict[str, Any] = {
@@ -48,9 +51,13 @@ class AppiumDriver:
         if self.driver:
             self.driver.quit()
             self.driver = None
+        """Stop the Appium server."""
+        if self.appium_service.is_running:
+            self.appium_service.stop()
 
 
 # ========================= Appium Driver Instance =========================
+
 
 @pytest.fixture(scope="session")
 def appium_driver():
@@ -113,3 +120,4 @@ def pytest_configure(config):
     allure_results_dir = "Automation-logic/allure-results"
     os.makedirs(allure_results_dir, exist_ok=True)  # Ensure the directory exists
     config.option.allure_report_dir = allure_results_dir
+

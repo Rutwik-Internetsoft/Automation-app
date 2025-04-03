@@ -37,3 +37,13 @@
 2025-04-02T20:04:45.842706+0530 INFO Driver initialized for the test.
 2025-04-02T20:04:45.844699+0530 INFO Starting Tip Test in Cash Log
 2025-04-02T20:05:38.362295+0530 INFO Tip validation result: True
+2025-04-03T18:19:24.933166+0530 INFO Driver initialized for the test.
+2025-04-03T18:19:24.957014+0530 INFO Starting Cash Log Test
+2025-04-03T18:19:30.921383+0530 INFO Checked cash log successfully.
+2025-04-03T18:20:46.279764+0530 INFO Ordering validation result: True
+2025-04-03T18:20:46.415473+0530 INFO Driver initialized for the test.
+2025-04-03T18:20:46.417914+0530 INFO Starting Refund Test in Cash Log
+2025-04-03T18:22:47.819797+0530 INFO Refund validation result: True
+2025-04-03T18:22:47.965897+0530 INFO Driver initialized for the test.
+2025-04-03T18:22:47.980815+0530 INFO Starting Tip Test in Cash Log
+2025-04-03T18:24:24.972848+0530 INFO Tip validation result: True
