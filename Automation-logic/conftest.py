@@ -5,9 +5,7 @@ import allure
 from typing import Dict, Any
 from appium import webdriver
 from appium.options.common.base import AppiumOptions
-import subprocess
 from appium.webdriver.common.appiumby import AppiumBy
-import time
 from appium.webdriver.appium_service import AppiumService
 from logic.dependencies import Dependencies
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -23,7 +21,7 @@ class AppiumDriver:
         self.appium_service = AppiumService()
         self.appium_service.start()
         self.driver = None
-        self.url = "http://192.168.56.1:4723"        
+        self.url = "http://127.0.0.1:4723"        
         self.caps: Dict[str, Any] = {
             "platformName": "Android",
             "appium:deviceName": "TS43223941452",
